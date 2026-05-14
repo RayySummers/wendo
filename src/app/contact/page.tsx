@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useCallback } from "react";
+import { useState, useCallback } from "react";
 import styles from "./page.module.css";
 
 const faqData = [
@@ -43,55 +43,75 @@ export default function ContactPage() {
     setFormState("success");
   };
 
-  const animatingRef = useRef(false);
-
   const toggleFaq = useCallback((e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
     const summary = e.currentTarget;
     const details = summary.parentElement as HTMLDetailsElement;
-    const answer = summary.nextElementSibling as HTMLElement;
+    const answer = details.querySelector("div") as HTMLElement;
+    const inner = answer.querySelector("span") as HTMLElement;
 
-    if (animatingRef.current) return;
-    animatingRef.current = true;
+    if (details.hasAttribute("open")) {
+      const steps = 60;
+      let containerKF = "";
+      let innerKF = "";
+      for (let i = 0; i <= steps; i++) {
+        const t = i / steps;
+        const eased = Math.pow(t, 3);
+        const scale = 1 - 0.999 * eased;
+        const innerScale = 1 / scale;
+        const pct = ((i * 100) / steps).toFixed(2);
+        containerKF += `${pct}%{transform:scaleY(${scale.toFixed(6)})}\n`;
+        innerKF += `${pct}%{transform:scaleY(${innerScale.toFixed(6)})}\n`;
+      }
+      const style = document.createElement("style");
+      style.textContent = `@keyframes fc{${containerKF}}@keyframes fi{${innerKF}}`;
+      document.head.appendChild(style);
 
-    const isOpen = details.hasAttribute("open");
+      answer.style.overflow = "hidden";
+      answer.style.transformOrigin = "top center";
+      answer.style.animation = "fc 0.35s linear forwards";
+      inner.style.transformOrigin = "top center";
+      inner.style.animation = "fi 0.35s linear forwards";
 
-    if (isOpen) {
-      const height = answer.scrollHeight;
-      const animation = answer.animate(
-        [
-          { maxHeight: height + "px", opacity: 1 },
-          { maxHeight: "0px", opacity: 0 },
-        ],
-        { duration: 400, easing: "ease-in-out" }
-      );
-      animation.onfinish = () => {
+      const done = () => {
         details.removeAttribute("open");
-        answer.style.maxHeight = "";
-        answer.style.opacity = "";
-        animatingRef.current = false;
+        answer.style.cssText = "";
+        inner.style.cssText = "";
+        style.remove();
+        answer.removeEventListener("animationend", done);
       };
+      answer.addEventListener("animationend", done);
     } else {
       details.setAttribute("open", "");
-      requestAnimationFrame(() => {
-        const height = answer.scrollHeight;
-        answer.style.maxHeight = "0px";
-        answer.style.opacity = "0";
-        requestAnimationFrame(() => {
-          const animation = answer.animate(
-            [
-              { maxHeight: "0px", opacity: 0 },
-              { maxHeight: height + "px", opacity: 1 },
-            ],
-            { duration: 400, easing: "ease-in-out" }
-          );
-          animation.onfinish = () => {
-            answer.style.maxHeight = height + "px";
-            answer.style.opacity = "1";
-            animatingRef.current = false;
-          };
-        });
-      });
+      const steps = 60;
+      let containerKF = "";
+      let innerKF = "";
+      for (let i = 0; i <= steps; i++) {
+        const t = i / steps;
+        const eased = 1 - Math.pow(1 - t, 3);
+        const scale = 0.001 + 0.999 * eased;
+        const innerScale = 1 / scale;
+        const pct = ((i * 100) / steps).toFixed(2);
+        containerKF += `${pct}%{transform:scaleY(${scale.toFixed(6)})}\n`;
+        innerKF += `${pct}%{transform:scaleY(${innerScale.toFixed(6)})}\n`;
+      }
+      const style = document.createElement("style");
+      style.textContent = `@keyframes fe{${containerKF}}@keyframes fie{${innerKF}}`;
+      document.head.appendChild(style);
+
+      answer.style.overflow = "hidden";
+      answer.style.transformOrigin = "top center";
+      answer.style.animation = "fe 0.35s linear forwards";
+      inner.style.transformOrigin = "top center";
+      inner.style.animation = "fie 0.35s linear forwards";
+
+      const done = () => {
+        answer.style.cssText = "";
+        inner.style.cssText = "";
+        style.remove();
+        answer.removeEventListener("animationend", done);
+      };
+      answer.addEventListener("animationend", done);
     }
   }, []);
 
@@ -214,7 +234,7 @@ export default function ContactPage() {
           {faqData.map((item) => (
             <details key={item.question} className={styles.faqItem}>
               <summary className={styles.faqQuestion} onClick={toggleFaq}>{item.question}</summary>
-              <div className={styles.faqAnswer}>{item.answer}</div>
+              <div className={styles.faqAnswer}><span className={styles.faqInner}>{item.answer}</span></div>
             </details>
           ))}
         </div>

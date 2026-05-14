@@ -364,13 +364,17 @@
 
 .faqAnswer {
   overflow: hidden;
+}
+
+.faqInner {
+  display: block;
   padding: 0 24px;
   font-size: 0.875rem;
   line-height: 1.7;
   color: var(--color-text-secondary);
 }
 
-.faqItem[open] .faqAnswer {
+.faqItem[open] .faqInner {
   padding-bottom: 20px;
 }
 
