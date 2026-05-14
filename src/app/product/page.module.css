@@ -453,19 +453,79 @@
 }
 
 @media (max-width: 768px) {
+  .hero {
+    min-height: auto;
+    padding: 60px 24px;
+  }
+
+  .heroTitle {
+    font-size: clamp(1.8rem, 7vw, 3rem);
+  }
+
+  .heroSubtitle {
+    font-size: 0.95rem;
+  }
+
+  .wendo {
+    padding: 60px 16px;
+  }
+
+  .wendoItem {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px 16px;
+    gap: 8px;
+  }
+
+  .wendoLetter {
+    font-size: 3.5rem;
+    width: auto;
+  }
+
+  .wendoCn {
+    width: auto;
+    font-size: 1.2rem;
+  }
+
+  .wendoDesc {
+    text-align: left;
+    font-size: 0.875rem;
+  }
+
   .dimensionsGrid {
     grid-template-columns: 1fr;
   }
 
+  .dimensions {
+    padding: 60px 16px;
+  }
+
   .subscriptionCard {
-    padding: 40px 24px;
+    padding: 40px 20px;
   }
 
   .subscriptionForm {
     flex-direction: column;
   }
 
+  .subscriptionInput {
+    width: 100%;
+  }
+
   .faqQuestion {
     font-size: 0.875rem;
+  }
+
+  .processFlow {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .processArrow {
+    transform: rotate(90deg);
+  }
+
+  .processStep {
+    max-width: 100%;
   }
 }

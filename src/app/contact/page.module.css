@@ -306,6 +306,15 @@
 }
 
 @media (max-width: 768px) {
+  .hero {
+    min-height: auto;
+    padding: 60px 24px;
+  }
+
+  .heroTitle {
+    font-size: clamp(2rem, 8vw, 3rem);
+  }
+
   .formRow {
     grid-template-columns: 1fr;
   }

@@ -359,11 +359,52 @@
     min-height: auto;
   }
 
+  .heroInner {
+    flex-direction: column;
+    gap: 32px;
+    text-align: center;
+  }
+
+  .heroContent {
+    align-items: center;
+  }
+
+  .heroLogo {
+    display: none;
+  }
+
+  .heroLogoImg {
+    width: 200px;
+    height: 200px;
+  }
+
   .heroDecor {
     display: none;
   }
 
+  .heroEyebrow {
+    font-size: 0.7rem;
+  }
+
+  .heroTitle {
+    font-size: clamp(2rem, 8vw, 3rem);
+  }
+
+  .heroSubtitle {
+    font-size: 0.95rem;
+  }
+
+  .heroCtas {
+    justify-content: center;
+  }
+
   .stepsGrid {
     grid-template-columns: 1fr;
+  }
+
+  .ctaCard {
+    flex-direction: column;
+    padding: 40px 24px;
+    text-align: center;
   }
 }
