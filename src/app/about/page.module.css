@@ -175,6 +175,7 @@
 .memberRole {
   font-size: 0.8rem;
   font-weight: 600;
+  font-family: var(--font-ui);
   color: var(--color-primary);
   margin-top: 4px;
 }
