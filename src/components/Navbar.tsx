@@ -68,7 +68,7 @@ export default function Navbar() {
           ))}
           <li className={styles.mobileCta}>
             <Link href="/contact" className={styles.ctaBtn} onClick={() => setMenuOpen(false)}>
-              报名抢先体验计划
+              报名体验
             </Link>
           </li>
         </ul>
@@ -99,7 +99,7 @@ export default function Navbar() {
           </button>
 
           <Link href="/contact" className={styles.ctaBtn}>
-            报名抢先体验计划
+            报名体验
           </Link>
 
           <button

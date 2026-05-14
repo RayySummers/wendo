@@ -140,17 +140,13 @@ export default function ProductPage() {
 
       <section className={styles.dimensions}>
         <div className={styles.dimensionsHeader}>
-          <h2 className={`${styles.sectionTitle} font-serif-en`}>四大诊断维度</h2>
+          <h2 className={`${styles.sectionTitle} font-serif-en`}>诊断维度</h2>
           <p className={styles.sectionSubtitle}>标准化分维度量化评分机制，每个维度独立评分，最终汇总生成总分</p>
         </div>
         <div className={styles.dimensionsGrid}>
           {dimensions.map((d) => (
             <div key={d.title} className={styles.dimensionCard}>
               <span className={styles.dimensionIcon}>{d.icon}</span>
-              <div className={styles.dimensionScore}>
-                <span className={styles.dimensionScoreValue}>{d.maxScore}</span>
-                <span className={styles.dimensionScoreMax}>分</span>
-              </div>
               <h3 className={styles.dimensionTitle}>{d.title}</h3>
               <p className={styles.dimensionDesc}>{d.desc}</p>
             </div>
