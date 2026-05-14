@@ -120,6 +120,7 @@ export default function PricingPage() {
               key={plan.name}
               className={`${styles.planCard} ${plan.highlight ? styles.highlighted : ""}`}
             >
+              <p className={styles.planNameEn}>{plan.name}</p>
               {plan.tag && (
                 <div
                   className={styles.planTag}

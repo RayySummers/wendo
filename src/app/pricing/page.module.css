@@ -102,7 +102,18 @@
   font-family: var(--font-ui);
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--color-primary);
+  color: var(--color-text-muted);
+}
+
+.planNameEn {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #dc2626;
 }
 
 .planPrice {
