@@ -62,7 +62,7 @@ export default function ContactPage() {
           { maxHeight: height + "px", opacity: 1 },
           { maxHeight: "0px", opacity: 0 },
         ],
-        { duration: 300, easing: "ease-in-out" }
+        { duration: 400, easing: "ease-in-out" }
       );
       animation.onfinish = () => {
         details.removeAttribute("open");
@@ -80,7 +80,7 @@ export default function ContactPage() {
           { maxHeight: "0px", opacity: 0 },
           { maxHeight: height + "px", opacity: 1 },
         ],
-        { duration: 300, easing: "ease-in-out" }
+        { duration: 400, easing: "ease-in-out" }
       );
       animation.onfinish = () => {
         answer.style.maxHeight = height + "px";

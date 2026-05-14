@@ -6,17 +6,28 @@
   min-height: 60vh;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  gap: 64px;
   padding: 80px 24px;
   background: var(--color-bg-hero);
 }
 
 .heroContent {
-  max-width: 1200px;
-  margin: 0 auto;
-  width: 100%;
+  max-width: 600px;
   display: flex;
   flex-direction: column;
   gap: 24px;
+}
+
+.heroLogo {
+  flex-shrink: 0;
+}
+
+.heroLogoImg {
+  width: 400px;
+  height: 400px;
+  object-fit: contain;
+  opacity: 0.8;
 }
 
 .heroEyebrow {
@@ -371,6 +382,20 @@
 
   .processStep {
     max-width: 100%;
+  }
+
+  .hero {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .heroLogo {
+    order: -1;
+  }
+
+  .heroLogoImg {
+    width: 200px;
+    height: 200px;
   }
 }
 

@@ -70,7 +70,7 @@ export default function ProductPage() {
           { maxHeight: height + "px", opacity: 1 },
           { maxHeight: "0px", opacity: 0 },
         ],
-        { duration: 300, easing: "ease-in-out" }
+        { duration: 400, easing: "ease-in-out" }
       );
       animation.onfinish = () => {
         details.removeAttribute("open");
@@ -88,7 +88,7 @@ export default function ProductPage() {
           { maxHeight: "0px", opacity: 0 },
           { maxHeight: height + "px", opacity: 1 },
         ],
-        { duration: 300, easing: "ease-in-out" }
+        { duration: 400, easing: "ease-in-out" }
       );
       animation.onfinish = () => {
         answer.style.maxHeight = height + "px";
@@ -111,6 +111,15 @@ export default function ProductPage() {
           <a href="/contact" className={styles.primaryBtn}>
             立即体验 →
           </a>
+        </div>
+        <div className={styles.heroLogo}>
+          <img
+            src="/wendo_logo_vectorized.svg"
+            alt="文渡 Wendo"
+            width={400}
+            height={400}
+            className={styles.heroLogoImg}
+          />
         </div>
       </section>
 
