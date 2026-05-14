@@ -287,11 +287,15 @@
   font-size: 0.875rem;
   line-height: 1.7;
   color: var(--color-text-secondary);
-  transition: height 0.4s ease;
+  transition: max-height 0.4s ease, padding 0.4s ease;
 }
 
 .faqItem[open] .faqAnswer {
   padding-bottom: 20px;
+}
+
+.faqAnswer.closing {
+  padding-bottom: 0;
 }
 
 @media (max-width: 1024px) {

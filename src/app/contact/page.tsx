@@ -45,36 +45,36 @@ export default function ContactPage() {
 
   const toggleFaq = useCallback((e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
-    const summary = e.currentTarget;
-    const details = summary.parentElement as HTMLDetailsElement;
-    const answer = summary.nextElementSibling as HTMLElement;
+    const summary = e.currentTarget as HTMLElement;
+    const details = summary.closest("details") as HTMLDetailsElement;
+    const answer = details.querySelector("div") as HTMLElement;
 
-    const isOpen = details.hasAttribute("open");
-
-    if (isOpen) {
+    if (details.hasAttribute("open")) {
       const height = answer.scrollHeight;
-      answer.style.height = height + "px";
-      answer.style.overflow = "hidden";
+      answer.style.maxHeight = height + "px";
       requestAnimationFrame(() => {
-        answer.style.height = "0px";
+        answer.classList.add("closing");
+        answer.style.maxHeight = "0px";
       });
-      setTimeout(() => {
+      const onEnd = () => {
         details.removeAttribute("open");
-        answer.style.height = "";
-        answer.style.overflow = "";
-      }, 400);
+        answer.classList.remove("closing");
+        answer.style.maxHeight = "";
+        answer.removeEventListener("transitionend", onEnd);
+      };
+      answer.addEventListener("transitionend", onEnd);
     } else {
       details.setAttribute("open", "");
       const height = answer.scrollHeight;
-      answer.style.height = "0px";
-      answer.style.overflow = "hidden";
+      answer.style.maxHeight = "0px";
       requestAnimationFrame(() => {
-        answer.style.height = height + "px";
+        answer.style.maxHeight = height + "px";
       });
-      setTimeout(() => {
-        answer.style.height = "";
-        answer.style.overflow = "";
-      }, 400);
+      const onEnd = () => {
+        answer.style.maxHeight = "";
+        answer.removeEventListener("transitionend", onEnd);
+      };
+      answer.addEventListener("transitionend", onEnd);
     }
   }, []);
 
