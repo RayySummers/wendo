@@ -107,13 +107,9 @@ export default function PricingPage() {
     <div className={styles.page}>
       <section className={styles.hero}>
         <div className={styles.heroContent}>
-          <p className={styles.heroEyebrow}>订阅定价</p>
-          <h1 className={`${styles.heroTitle} font-serif-en`}>
-            Simple, Transparent<br />Pricing
+          <h1 className={styles.heroTitle} style={{ fontFamily: 'var(--font-body)', textAlign: 'center' }}>
+            定价
           </h1>
-          <p className={styles.heroSubtitle}>
-            无论您是初次尝试还是规模化使用，文渡都有适合您的方案。随时升级或降级，无锁定合同。
-          </p>
         </div>
       </section>
 

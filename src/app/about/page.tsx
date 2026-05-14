@@ -54,13 +54,9 @@ export default function AboutPage() {
     <div className={styles.page}>
       <section className={styles.hero}>
         <div className={styles.heroContent}>
-          <p className={styles.heroEyebrow}>关于文渡</p>
-          <h1 className={`${styles.heroTitle} font-serif-en`}>
-            Where Words Warm<br />the World
+          <h1 className={styles.heroTitle} style={{ fontFamily: 'var(--font-body)', textAlign: 'center' }}>
+            关于文渡
           </h1>
-          <p className={styles.heroSubtitle}>
-            文渡诞生于一个朴素的信念：语言是文化的载体，每一个出海的中国品牌，都值得被全球用户真正理解与喜爱。
-          </p>
         </div>
       </section>
 

@@ -127,6 +127,28 @@ export default function ProductPage() {
         </div>
       </section>
 
+      <section className={styles.wendo}>
+        <div className={styles.wendoHeader}>
+          <h2 className={`${styles.sectionTitle} font-serif-en`}>W-E-N-D-O</h2>
+          <p className={styles.sectionSubtitle}>文渡价值观</p>
+        </div>
+        <div className={styles.wendoList}>
+          {[
+            { letter: "W", cn: "Warm", desc: "传递温度" },
+            { letter: "E", cn: "Empathy", desc: "共情为本" },
+            { letter: "N", cn: "Navigate", desc: "导航出海" },
+            { letter: "D", cn: "Diagnose", desc: "精准诊断" },
+            { letter: "O", cn: "Optimize", desc: "优化赋能" },
+          ].map((v) => (
+            <div key={v.letter} className={styles.wendoItem}>
+              <span className={styles.wendoLetter}>{v.letter}</span>
+              <span className={styles.wendoCn}>{v.cn}</span>
+              <span className={styles.wendoDesc}>{v.desc}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
       <section className={styles.dimensions}>
         <div className={styles.dimensionsHeader}>
           <h2 className={`${styles.sectionTitle} font-serif-en`}>Four Diagnostic Dimensions</h2>
@@ -190,6 +212,7 @@ export default function ProductPage() {
       <section className={styles.faq}>
         <div className={styles.faqHeader}>
           <h2 className={`${styles.sectionTitle} font-serif-en`}>FAQ</h2>
+          <p className={styles.sectionSubtitle}>常见问题解答</p>
         </div>
         <div className={styles.faqList}>
           {faq.map((item) => (

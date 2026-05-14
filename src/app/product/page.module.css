@@ -94,6 +94,65 @@
   margin-top: -8px;
 }
 
+.wendo {
+  padding: 96px 24px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.wendoHeader {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.wendoList {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.wendoItem {
+  display: flex;
+  align-items: center;
+  padding: 20px 32px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.wendoItem:last-child {
+  border-bottom: none;
+}
+
+.wendoLetter {
+  font-size: 5rem;
+  font-weight: 700;
+  font-family: var(--font-body);
+  color: var(--color-primary);
+  line-height: 1;
+  width: 80px;
+  flex-shrink: 0;
+  text-align: left;
+}
+
+.wendoCn {
+  font-size: 1.4rem;
+  font-weight: 600;
+  font-family: var(--font-ui);
+  color: var(--color-text);
+  width: 280px;
+  flex-shrink: 0;
+  text-align: center;
+}
+
+.wendoDesc {
+  font-size: 0.95rem;
+  color: var(--color-text-secondary);
+  flex: 1;
+  text-align: right;
+}
+
 .dimensions {
   padding: 96px 24px;
   background: var(--color-bg-secondary);
@@ -315,6 +374,7 @@
 
 .faqHeader {
   margin-bottom: 40px;
+  text-align: center;
 }
 
 .faqList {

@@ -96,14 +96,10 @@ export default function ContactPage() {
   return (
     <div className={styles.page}>
       <section className={styles.hero}>
-        <div className={styles.heroContent}>
-          <p className={styles.heroEyebrow}>联系我们</p>
-          <h1 className={`${styles.heroTitle} font-serif-en`}>
-            Let&apos;s Connect
+        <div className={styles.heroContent} style={{ gap: 0 }}>
+          <h1 className={styles.heroTitle} style={{ fontFamily: 'var(--font-body)', textAlign: 'center' }}>
+            联系我们
           </h1>
-          <p className={styles.heroSubtitle}>
-            无论是产品咨询、商务合作，还是只是想打个招呼——我们都很期待收到您的消息。
-          </p>
         </div>
       </section>
 

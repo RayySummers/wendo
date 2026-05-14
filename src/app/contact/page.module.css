@@ -233,6 +233,7 @@
   color: var(--color-text);
   margin-bottom: 40px;
   letter-spacing: -0.02em;
+  text-align: center;
 }
 
 .faqList {

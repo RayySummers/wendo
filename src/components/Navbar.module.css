@@ -42,6 +42,15 @@
 
 .logoText {
   font-family: var(--font-body);
+  transition: opacity 0.3s ease;
+}
+
+.logoTextHidden {
+  opacity: 0;
+}
+
+.logoTextVisible {
+  opacity: 1;
 }
 
 .logoIcon {

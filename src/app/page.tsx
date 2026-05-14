@@ -59,7 +59,7 @@ export default function HomePage() {
         <div className={styles.heroContent}>
           <p className={styles.heroEyebrow}>跨境外贸网站本地化专家</p>
           <h1 className={`${styles.heroTitle} font-serif-en`}>
-            Where Words Warm<br />the World
+            让出海有温度
           </h1>
           <p className={styles.heroSubtitle}>
             让全球用户感受品牌的温度——文渡帮助中国出海企业将英文网站从"准确翻译"升级为"温暖触达"。

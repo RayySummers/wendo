@@ -65,8 +65,8 @@
   --color-text-muted: #888888;
   --color-text-inverse: #ffffff;
 
-  --color-border: #1e3a8a;
-  --color-border-strong: #2d4fc0;
+  --color-border: #404040;
+  --color-border-strong: #666666;
 
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
   --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);

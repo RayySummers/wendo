@@ -15,7 +15,6 @@ const navLinks = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [visible, setVisible] = useState(true);
   const [theme, setTheme] = useState<"dark" | "light">(() => {
     if (typeof window !== "undefined") {
       return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
@@ -24,22 +23,14 @@ export default function Navbar() {
   });
 
   useEffect(() => {
-    let prevY = window.scrollY;
     const handleScroll = () => {
-      const currY = window.scrollY;
-      setScrolled(currY > 12);
-      if (currY <= 12) {
-        setVisible(true);
-      } else if (currY < prevY) {
-        setVisible(true);
-      } else if (currY > prevY) {
-        setVisible(false);
-      }
-      prevY = currY;
+      setScrolled(window.scrollY > 12);
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const logoTextVisible = scrolled;
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
@@ -50,7 +41,7 @@ export default function Navbar() {
   };
 
   return (
-    <header className={`${styles.navbar} ${scrolled ? styles.scrolled : ""} ${visible ? styles.visible : styles.hidden}`}>
+    <header className={`${styles.navbar} ${scrolled ? styles.scrolled : ""}`}>
       <nav className={styles.nav}>
         <Link href="/" className={styles.logo}>
           <img
@@ -60,7 +51,7 @@ export default function Navbar() {
             height={28}
             className={styles.logoIcon}
           />
-          <span className={styles.logoText}>文渡 Wendo</span>
+          <span className={`${styles.logoText} ${logoTextVisible ? styles.logoTextVisible : styles.logoTextHidden}`}>文渡 Wendo</span>
         </Link>
 
         <ul className={`${styles.navLinks} ${menuOpen ? styles.open : ""}`}>
