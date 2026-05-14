@@ -62,7 +62,7 @@ export default function AboutPage() {
 
       <section className={styles.story}>
         <div className={styles.storyContent}>
-          <h2 className={`${styles.sectionTitle} font-serif-en`}>Our Story</h2>
+          <h2 className={`${styles.sectionTitle} font-serif-en`}>文渡的故事</h2>
           <div className={styles.storyText}>
             <p>
               2023年，我们为一家中国智能家居品牌做海外市场调研时发现，他们投入了大量广告预算，却因为官网英文文案"太翻译腔"而在社交媒体上遭受嘲笑。
@@ -82,7 +82,7 @@ export default function AboutPage() {
 
       <section className={styles.team}>
         <div className={styles.teamHeader}>
-          <h2 className={`${styles.sectionTitle} font-serif-en`}>Our Team</h2>
+          <h2 className={`${styles.sectionTitle} font-serif-en`}>我们团队</h2>
           <p className={styles.sectionSubtitle}>我们是一支专注跨文化商务智能的小团队</p>
         </div>
         <div className={styles.teamGrid}>
@@ -107,7 +107,7 @@ export default function AboutPage() {
 
       <section className={styles.values}>
         <div className={styles.valuesHeader}>
-          <h2 className={`${styles.sectionTitle} font-serif-en`}>Our Values</h2>
+          <h2 className={`${styles.sectionTitle} font-serif-en`}>团队价值观</h2>
         </div>
         <div className={styles.valuesGrid}>
           {values.map((v) => (
