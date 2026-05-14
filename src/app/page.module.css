@@ -170,7 +170,7 @@
 }
 
 .stats {
-  padding: 64px 24px;
+  padding: 40px 24px;
   background: var(--color-bg-secondary);
 }
 
@@ -218,7 +218,7 @@
 }
 
 .steps {
-  padding: 96px 24px;
+  padding: 60px 24px;
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -285,7 +285,7 @@
 }
 
 .cta {
-  padding: 96px 24px;
+  padding: 60px 24px;
   display: flex;
   justify-content: center;
 }
