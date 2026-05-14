@@ -141,7 +141,7 @@
   display: block;
   width: 22px;
   height: 2px;
-  background: var(--color-text-inverse);
+  background: #ffffff;
   border-radius: 2px;
   transition: transform var(--transition-base), opacity var(--transition-base);
 }
@@ -226,7 +226,5 @@
     padding: 12px 20px;
   }
 
-  .bar {
-    background: var(--color-text);
-  }
+  
 }
