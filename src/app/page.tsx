@@ -21,7 +21,7 @@ const diagnosticSteps = [
   },
 ];
 
-const heroTitles = ["让出海有文渡", "让出海有温度"];
+const heroWords = ["文渡", "温度"];
 
 export default function HomePage() {
   const [formState, setFormState] = useState<"idle" | "success">("idle");
@@ -75,8 +75,8 @@ export default function HomePage() {
         <div className={styles.heroInner}>
           <div className={styles.heroContent}>
             <p className={styles.heroEyebrow}>跨境外贸网站本地化专家</p>
-            <h1 key={animKey} className={`${styles.heroTitle} ${styles.heroTitleFlip}`}>
-              {heroTitles[titleIndex]}
+            <h1 className={`${styles.heroTitle}`}>
+              让出海有<span key={animKey} className={styles.heroTitleFlip}>{heroWords[titleIndex]}</span>
             </h1>
             <p className={styles.heroSubtitle}>
               文渡Wendo帮助中国出海企业温暖触达全球。
