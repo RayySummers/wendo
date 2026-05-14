@@ -102,7 +102,7 @@
   font-family: var(--font-ui);
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #ffffff;
+  color: var(--color-primary);
 }
 
 .planPrice {
