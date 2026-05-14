@@ -43,8 +43,8 @@ const plans = [
     nameCn: "专业版",
     price: "588",
     priceNote: "元 / 月",
-    tag: "POPULAR",
-    tagColor: "#7c3aed",
+    tag: "",
+    tagColor: "",
     desc: "适合诊断需求频繁的中型企业",
     features: [
       "每月 75 次诊断（每天 2 次）",
