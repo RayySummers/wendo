@@ -131,7 +131,7 @@
   font-family: var(--font-body);
   color: var(--color-primary);
   line-height: 1;
-  width: 160px;
+  width: 140px;
   flex-shrink: 0;
   text-align: left;
 }
