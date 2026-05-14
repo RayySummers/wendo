@@ -80,21 +80,25 @@ export default function ProductPage() {
       };
     } else {
       details.setAttribute("open", "");
-      const height = answer.scrollHeight;
-      answer.style.maxHeight = "0px";
-      answer.style.opacity = "0";
-      const animation = answer.animate(
-        [
-          { maxHeight: "0px", opacity: 0 },
-          { maxHeight: height + "px", opacity: 1 },
-        ],
-        { duration: 400, easing: "ease-in-out" }
-      );
-      animation.onfinish = () => {
-        answer.style.maxHeight = height + "px";
-        answer.style.opacity = "1";
-        animatingRef.current = false;
-      };
+      requestAnimationFrame(() => {
+        const height = answer.scrollHeight;
+        answer.style.maxHeight = "0px";
+        answer.style.opacity = "0";
+        requestAnimationFrame(() => {
+          const animation = answer.animate(
+            [
+              { maxHeight: "0px", opacity: 0 },
+              { maxHeight: height + "px", opacity: 1 },
+            ],
+            { duration: 400, easing: "ease-in-out" }
+          );
+          animation.onfinish = () => {
+            answer.style.maxHeight = height + "px";
+            answer.style.opacity = "1";
+            animatingRef.current = false;
+          };
+        });
+      });
     }
   }, []);
   return (
