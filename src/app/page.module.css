@@ -398,13 +398,55 @@
     justify-content: center;
   }
 
+  .stats {
+    padding: 32px 16px;
+  }
+
+  .statsGrid {
+    gap: 16px;
+  }
+
+  .steps {
+    padding: 40px 16px;
+  }
+
+  .stepsHeader {
+    margin-bottom: 32px;
+  }
+
   .stepsGrid {
     grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .stepCard {
+    padding: 24px 20px;
+  }
+
+  .stepTitle {
+    font-size: 1rem;
+  }
+
+  .stepDesc {
+    font-size: 0.825rem;
+  }
+
+  .cta {
+    padding: 40px 16px;
   }
 
   .ctaCard {
     flex-direction: column;
-    padding: 40px 24px;
+    padding: 32px 20px;
     text-align: center;
+    gap: 24px;
+  }
+
+  .ctaTitle {
+    font-size: 1.5rem;
+  }
+
+  .ctaText {
+    font-size: 0.9rem;
   }
 }
