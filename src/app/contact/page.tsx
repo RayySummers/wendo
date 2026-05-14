@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useCallback } from "react";
 import styles from "./page.module.css";
 
 const faqData = [
@@ -36,12 +36,59 @@ export default function ContactPage() {
     company: "",
     message: "",
   });
+  const animatingRef = useRef(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.message) return;
     setFormState("success");
   };
+
+  const toggleFaq = useCallback((e: React.MouseEvent<HTMLElement>) => {
+    e.preventDefault();
+    const summary = e.currentTarget;
+    const details = summary.parentElement as HTMLDetailsElement;
+    const answer = summary.nextElementSibling as HTMLElement;
+
+    if (animatingRef.current) return;
+    animatingRef.current = true;
+
+    const isOpen = details.hasAttribute("open");
+
+    if (isOpen) {
+      const height = answer.scrollHeight;
+      const animation = answer.animate(
+        [
+          { maxHeight: height + "px", opacity: 1 },
+          { maxHeight: "0px", opacity: 0 },
+        ],
+        { duration: 300, easing: "ease-in-out" }
+      );
+      animation.onfinish = () => {
+        details.removeAttribute("open");
+        answer.style.maxHeight = "";
+        answer.style.opacity = "";
+        animatingRef.current = false;
+      };
+    } else {
+      details.setAttribute("open", "");
+      const height = answer.scrollHeight;
+      answer.style.maxHeight = "0px";
+      answer.style.opacity = "0";
+      const animation = answer.animate(
+        [
+          { maxHeight: "0px", opacity: 0 },
+          { maxHeight: height + "px", opacity: 1 },
+        ],
+        { duration: 300, easing: "ease-in-out" }
+      );
+      animation.onfinish = () => {
+        answer.style.maxHeight = height + "px";
+        answer.style.opacity = "1";
+        animatingRef.current = false;
+      };
+    }
+  }, []);
 
   return (
     <div className={styles.page}>
@@ -161,7 +208,7 @@ export default function ContactPage() {
         <div className={styles.faqList}>
           {faqData.map((item) => (
             <details key={item.question} className={styles.faqItem}>
-              <summary className={styles.faqQuestion}>{item.question}</summary>
+              <summary className={styles.faqQuestion} onClick={toggleFaq}>{item.question}</summary>
               <div className={styles.faqAnswer}>{item.answer}</div>
             </details>
           ))}

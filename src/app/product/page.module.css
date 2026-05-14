@@ -3,7 +3,7 @@
 }
 
 .hero {
-  min-height: calc(80vh - var(--nav-height));
+  min-height: 60vh;
   display: flex;
   align-items: center;
   padding: 80px 24px;
@@ -310,17 +310,10 @@
 
 .faqItem {
   border-bottom: 1px solid var(--color-border);
-  display: grid;
-  grid-template-rows: auto 0fr;
-  transition: grid-template-rows 0.35s ease;
 }
 
 .faqItem:last-child {
   border-bottom: none;
-}
-
-.faqItem[open] {
-  grid-template-rows: auto 1fr;
 }
 
 .faqQuestion {

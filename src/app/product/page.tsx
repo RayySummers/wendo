@@ -1,3 +1,6 @@
+"use client";
+
+import { useRef, useCallback } from "react";
 import styles from "./page.module.css";
 
 const dimensions = [
@@ -47,6 +50,53 @@ const faq = [
 ];
 
 export default function ProductPage() {
+  const animatingRef = useRef(false);
+
+  const toggleFaq = useCallback((e: React.MouseEvent<HTMLElement>) => {
+    e.preventDefault();
+    const summary = e.currentTarget;
+    const details = summary.parentElement as HTMLDetailsElement;
+    const answer = summary.nextElementSibling as HTMLElement;
+
+    if (animatingRef.current) return;
+    animatingRef.current = true;
+
+    const isOpen = details.hasAttribute("open");
+
+    if (isOpen) {
+      const height = answer.scrollHeight;
+      const animation = answer.animate(
+        [
+          { maxHeight: height + "px", opacity: 1 },
+          { maxHeight: "0px", opacity: 0 },
+        ],
+        { duration: 300, easing: "ease-in-out" }
+      );
+      animation.onfinish = () => {
+        details.removeAttribute("open");
+        answer.style.maxHeight = "";
+        answer.style.opacity = "";
+        animatingRef.current = false;
+      };
+    } else {
+      details.setAttribute("open", "");
+      const height = answer.scrollHeight;
+      answer.style.maxHeight = "0px";
+      answer.style.opacity = "0";
+      const animation = answer.animate(
+        [
+          { maxHeight: "0px", opacity: 0 },
+          { maxHeight: height + "px", opacity: 1 },
+        ],
+        { duration: 300, easing: "ease-in-out" }
+      );
+      animation.onfinish = () => {
+        answer.style.maxHeight = height + "px";
+        answer.style.opacity = "1";
+        animatingRef.current = false;
+      };
+    }
+  }, []);
   return (
     <div className={styles.page}>
       <section className={styles.hero}>
@@ -131,7 +181,7 @@ export default function ProductPage() {
         <div className={styles.faqList}>
           {faq.map((item) => (
             <details key={item.q} className={styles.faqItem}>
-              <summary className={styles.faqQuestion}>{item.q}</summary>
+              <summary className={styles.faqQuestion} onClick={toggleFaq}>{item.q}</summary>
               <div className={styles.faqAnswer}>{item.a}</div>
             </details>
           ))}
