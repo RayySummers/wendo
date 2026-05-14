@@ -76,7 +76,10 @@ export default function HomePage() {
           <div className={styles.heroContent}>
             <p className={styles.heroEyebrow}>跨境外贸网站本地化专家</p>
             <h1 className={`${styles.heroTitle}`}>
-              让出海有<span key={animKey} className={styles.heroTitleFlip}>{heroWords[titleIndex]}</span>
+              让出海有<br />
+              <span className={styles.heroWordWrapper}>
+                <span key={animKey} className={styles.heroWord}>{heroWords[titleIndex]}</span>
+              </span>
             </h1>
             <p className={styles.heroSubtitle}>
               文渡Wendo帮助中国出海企业温暖触达全球。
