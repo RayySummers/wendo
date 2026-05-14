@@ -97,7 +97,7 @@ const plans = [
       "SLA 服务保障",
     ],
     cta: "联系商务",
-    ctaHref: "mailto:contact@wendo.ai",
+    ctaHref: "mailto:wendocn@protonmail.com",
     highlight: false,
   },
 ];

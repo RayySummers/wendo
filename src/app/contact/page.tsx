@@ -190,8 +190,8 @@ export default function ContactPage() {
               <span className={styles.contactIcon}>✉️</span>
               <div>
                 <p className={styles.contactLabel}>联系邮箱</p>
-                <a href="mailto:contact@wendo.ai" className={styles.contactValue}>
-                  contact@wendo.ai
+                <a href="mailto:wendocn@protonmail.com" className={styles.contactValue}>
+                  wendocn@protonmail.com
                 </a>
               </div>
             </div>
