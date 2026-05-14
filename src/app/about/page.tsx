@@ -95,6 +95,7 @@ export default function AboutPage() {
         <div className={styles.teamGrid}>
           {team.map((member) => (
             <div key={member.name} className={styles.memberCard}>
+              <p className={styles.memberRole}>{member.role}</p>
               <div
                 className={styles.memberAvatar}
                 style={{ background: member.color }}
@@ -104,7 +105,6 @@ export default function AboutPage() {
               <div className={styles.memberInfo}>
                 <p className={styles.memberName}>{member.name}</p>
                 <p className={styles.memberNameEn}>{member.nameEn}</p>
-                <p className={styles.memberRole}>{member.role}</p>
                 <p className={styles.memberBio}>{member.bio}</p>
               </div>
             </div>

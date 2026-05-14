@@ -128,6 +128,7 @@
 }
 
 .memberCard {
+  position: relative;
   display: flex;
   gap: 20px;
   padding: 32px;
@@ -173,11 +174,14 @@
 }
 
 .memberRole {
-  font-size: 0.8rem;
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  font-size: 0.75rem;
   font-weight: 600;
   font-family: var(--font-ui);
   color: var(--color-primary);
-  margin-top: 4px;
+  text-align: right;
 }
 
 .memberBio {
