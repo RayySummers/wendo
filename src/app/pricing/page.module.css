@@ -149,6 +149,10 @@
   flex-shrink: 0;
 }
 
+.planFeatureMinus svg {
+  color: var(--color-accent-warm);
+}
+
 .planCta {
   display: block;
   text-align: center;

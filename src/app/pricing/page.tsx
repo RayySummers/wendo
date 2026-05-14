@@ -11,7 +11,7 @@ const plans = [
     desc: "适合初次体验文渡诊断服务的用户",
     features: [
       "每月 2 次诊断",
-      "允许文渡收集脱敏数据以提升服务质量",
+      { text: "允许文渡收集脱敏数据以提升服务质量", icon: "minus" },
       "基础诊断报告",
       "Email 支持",
     ],
@@ -137,14 +137,24 @@ export default function PricingPage() {
                 <p className={styles.planDesc}>{plan.desc}</p>
               </div>
               <ul className={styles.planFeatures}>
-                {plan.features.map((f) => (
-                  <li key={f} className={styles.planFeature}>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                      <polyline points="20 6 9 17 4 12" />
-                    </svg>
-                    {f}
-                  </li>
-                ))}
+                {plan.features.map((f, i) => {
+                  const isMinus = typeof f === "object" && f.icon === "minus";
+                  const text = typeof f === "object" ? f.text : f;
+                  return (
+                    <li key={i} className={`${styles.planFeature} ${isMinus ? styles.planFeatureMinus : ""}`}>
+                      {isMinus ? (
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                          <line x1="5" y1="12" x2="19" y2="12" />
+                        </svg>
+                      ) : (
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                          <polyline points="20 6 9 17 4 12" />
+                        </svg>
+                      )}
+                      {text}
+                    </li>
+                  );
+                })}
               </ul>
               <a
                 href={plan.ctaHref}
