@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useCallback } from "react";
+import { useCallback } from "react";
 import styles from "./page.module.css";
 
 const dimensions = [
@@ -50,80 +50,65 @@ const faq = [
 ];
 
 export default function ProductPage() {
-  const animatingRef = useRef(false);
-
   const toggleFaq = useCallback((e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
     const summary = e.currentTarget;
     const details = summary.parentElement as HTMLDetailsElement;
     const answer = summary.nextElementSibling as HTMLElement;
 
-    if (animatingRef.current) return;
-    animatingRef.current = true;
-
     const isOpen = details.hasAttribute("open");
 
     if (isOpen) {
       const height = answer.scrollHeight;
-      const animation = answer.animate(
-        [
-          { maxHeight: height + "px", opacity: 1 },
-          { maxHeight: "0px", opacity: 0 },
-        ],
-        { duration: 400, easing: "ease-in-out" }
-      );
-      animation.onfinish = () => {
+      answer.style.height = height + "px";
+      answer.style.overflow = "hidden";
+      requestAnimationFrame(() => {
+        answer.style.height = "0px";
+      });
+      setTimeout(() => {
         details.removeAttribute("open");
-        answer.style.maxHeight = "";
-        answer.style.opacity = "";
-        animatingRef.current = false;
-      };
+        answer.style.height = "";
+        answer.style.overflow = "";
+      }, 400);
     } else {
       details.setAttribute("open", "");
+      const height = answer.scrollHeight;
+      answer.style.height = "0px";
+      answer.style.overflow = "hidden";
       requestAnimationFrame(() => {
-        const height = answer.scrollHeight;
-        answer.style.maxHeight = "0px";
-        answer.style.opacity = "0";
-        requestAnimationFrame(() => {
-          const animation = answer.animate(
-            [
-              { maxHeight: "0px", opacity: 0 },
-              { maxHeight: height + "px", opacity: 1 },
-            ],
-            { duration: 400, easing: "ease-in-out" }
-          );
-          animation.onfinish = () => {
-            answer.style.maxHeight = height + "px";
-            answer.style.opacity = "1";
-            animatingRef.current = false;
-          };
-        });
+        answer.style.height = height + "px";
       });
+      setTimeout(() => {
+        answer.style.height = "";
+        answer.style.overflow = "";
+      }, 400);
     }
   }, []);
   return (
     <div className={styles.page}>
       <section className={styles.hero}>
-        <div className={styles.heroContent}>
-          <p className={styles.heroEyebrow}>产品介绍</p>
-          <h1 className={`${styles.heroTitle} font-serif-en`}>
-            让全球用户<br />感受品牌的温度
-          </h1>
-          <p className={styles.heroSubtitle}>
-            文渡将 AI 与跨文化商务智能结合，通过对话式交互帮助中国出海企业打造真正"入乡随俗"的英文品牌网站——不只是准确，更是温暖触达。
-          </p>
-          <a href="/contact" className={styles.primaryBtn}>
-            立即体验 →
-          </a>
-        </div>
-        <div className={styles.heroLogo}>
-          <img
-            src="/wendo_logo_vectorized.svg"
-            alt="文渡 Wendo"
-            width={400}
-            height={400}
-            className={styles.heroLogoImg}
-          />
+        <div className={styles.heroInner}>
+          <div className={styles.heroContent}>
+            <p className={styles.heroEyebrow}>产品介绍</p>
+            <h1 className={`${styles.heroTitle} font-serif-en`}>
+              让全球用户<br />感受品牌的温度
+            </h1>
+            <p className={styles.heroSubtitle}>
+              文渡将 AI 与跨文化商务智能结合，通过对话式交互帮助中国出海企业打造真正"入乡随俗"的英文品牌网站——不只是准确，更是温暖触达。
+            </p>
+            <a href="/contact" className={styles.primaryBtn}>
+              立即体验 →
+            </a>
+          </div>
+          <div className={styles.heroLogo}>
+            <img
+              src="/wendo_logo_vectorized.svg"
+              alt="文渡 Wendo"
+              width={400}
+              height={400}
+              className={styles.heroLogoImg}
+            />
+          </div>
         </div>
       </section>
 

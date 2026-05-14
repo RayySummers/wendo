@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useCallback } from "react";
+import { useState, useCallback } from "react";
 import styles from "./page.module.css";
 
 const faqData = [
@@ -36,7 +36,6 @@ export default function ContactPage() {
     company: "",
     message: "",
   });
-  const animatingRef = useRef(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -50,47 +49,32 @@ export default function ContactPage() {
     const details = summary.parentElement as HTMLDetailsElement;
     const answer = summary.nextElementSibling as HTMLElement;
 
-    if (animatingRef.current) return;
-    animatingRef.current = true;
-
     const isOpen = details.hasAttribute("open");
 
     if (isOpen) {
       const height = answer.scrollHeight;
-      const animation = answer.animate(
-        [
-          { maxHeight: height + "px", opacity: 1 },
-          { maxHeight: "0px", opacity: 0 },
-        ],
-        { duration: 400, easing: "ease-in-out" }
-      );
-      animation.onfinish = () => {
+      answer.style.height = height + "px";
+      answer.style.overflow = "hidden";
+      requestAnimationFrame(() => {
+        answer.style.height = "0px";
+      });
+      setTimeout(() => {
         details.removeAttribute("open");
-        answer.style.maxHeight = "";
-        answer.style.opacity = "";
-        animatingRef.current = false;
-      };
+        answer.style.height = "";
+        answer.style.overflow = "";
+      }, 400);
     } else {
       details.setAttribute("open", "");
+      const height = answer.scrollHeight;
+      answer.style.height = "0px";
+      answer.style.overflow = "hidden";
       requestAnimationFrame(() => {
-        const height = answer.scrollHeight;
-        answer.style.maxHeight = "0px";
-        answer.style.opacity = "0";
-        requestAnimationFrame(() => {
-          const animation = answer.animate(
-            [
-              { maxHeight: "0px", opacity: 0 },
-              { maxHeight: height + "px", opacity: 1 },
-            ],
-            { duration: 400, easing: "ease-in-out" }
-          );
-          animation.onfinish = () => {
-            answer.style.maxHeight = height + "px";
-            answer.style.opacity = "1";
-            animatingRef.current = false;
-          };
-        });
+        answer.style.height = height + "px";
       });
+      setTimeout(() => {
+        answer.style.height = "";
+        answer.style.overflow = "";
+      }, 400);
     }
   }, []);
 

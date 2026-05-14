@@ -6,11 +6,17 @@
   min-height: 60vh;
   display: flex;
   align-items: center;
-  gap: 64px;
+  justify-content: center;
   padding: 80px 24px;
   background: var(--color-bg-hero);
+}
+
+.heroInner {
+  display: flex;
+  align-items: center;
+  gap: 64px;
   max-width: 1200px;
-  margin: 0 auto;
+  width: 100%;
 }
 
 .heroContent {
@@ -362,6 +368,7 @@
   font-size: 0.875rem;
   line-height: 1.7;
   color: var(--color-text-secondary);
+  transition: height 0.4s ease;
 }
 
 .faqItem[open] .faqAnswer {

@@ -287,6 +287,7 @@
   font-size: 0.875rem;
   line-height: 1.7;
   color: var(--color-text-secondary);
+  transition: height 0.4s ease;
 }
 
 .faqItem[open] .faqAnswer {
