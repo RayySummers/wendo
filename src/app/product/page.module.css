@@ -96,7 +96,7 @@
 
 .wendo {
   padding: 96px 24px;
-  max-width: 900px;
+  max-width: 600px;
   margin: 0 auto;
 }
 
@@ -131,7 +131,7 @@
   font-family: var(--font-body);
   color: var(--color-primary);
   line-height: 1;
-  width: 80px;
+  width: 60px;
   flex-shrink: 0;
   text-align: left;
 }
@@ -141,7 +141,7 @@
   font-weight: 600;
   font-family: var(--font-ui);
   color: var(--color-text);
-  width: 280px;
+  width: 200px;
   flex-shrink: 0;
   text-align: center;
 }
@@ -453,7 +453,7 @@
 
   .hero {
     flex-direction: column;
-    text-align: center;
+  text-align: left;
   }
 
   .heroLogo {
