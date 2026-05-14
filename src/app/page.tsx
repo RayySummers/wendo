@@ -27,7 +27,7 @@ export default function HomePage() {
   const [formState, setFormState] = useState<"idle" | "success">("idle");
   const [formData, setFormData] = useState({ name: "", company: "", email: "", area: "" });
   const [titleIndex, setTitleIndex] = useState(0);
-  const [animating, setAnimating] = useState(false);
+  const [animKey, setAnimKey] = useState(0);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -40,6 +40,7 @@ export default function HomePage() {
   useEffect(() => {
     timerRef.current = setTimeout(() => {
       setTitleIndex((i) => (i === 0 ? 1 : 0));
+      setAnimKey((k) => k + 1);
     }, 4000);
     return () => {
       if (timerRef.current) clearTimeout(timerRef.current);
@@ -74,7 +75,7 @@ export default function HomePage() {
         <div className={styles.heroInner}>
           <div className={styles.heroContent}>
             <p className={styles.heroEyebrow}>跨境外贸网站本地化专家</p>
-            <h1 className={`${styles.heroTitle} ${styles.heroTitleFlip}`}>
+            <h1 key={animKey} className={`${styles.heroTitle} ${styles.heroTitleFlip}`}>
               {heroTitles[titleIndex]}
             </h1>
             <p className={styles.heroSubtitle}>

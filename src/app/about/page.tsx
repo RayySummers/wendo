@@ -82,7 +82,7 @@ export default function AboutPage() {
 
       <section className={styles.team}>
         <div className={styles.teamHeader}>
-          <h2 className={`${styles.sectionTitle} font-serif-en`}>我们团队</h2>
+          <h2 className={`${styles.sectionTitle} font-serif-en`}>文渡团队</h2>
           <p className={styles.sectionSubtitle}>我们是一支专注跨文化商务智能的小团队</p>
         </div>
         <div className={styles.teamGrid}>
