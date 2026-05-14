@@ -57,6 +57,15 @@
   letter-spacing: -0.02em;
 }
 
+.heroTitleFlip {
+  animation: titleFlip 0.4s ease-in-out;
+}
+
+@keyframes titleFlip {
+  0% { opacity: 0; transform: translateY(-16px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
 .heroSubtitle {
   font-size: 1.1rem;
   line-height: 1.7;

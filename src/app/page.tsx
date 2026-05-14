@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import styles from "./page.module.css";
 
 const diagnosticSteps = [
@@ -21,15 +21,30 @@ const diagnosticSteps = [
   },
 ];
 
+const heroTitles = ["让出海有文渡", "让出海有温度"];
+
 export default function HomePage() {
   const [formState, setFormState] = useState<"idle" | "success">("idle");
   const [formData, setFormData] = useState({ name: "", company: "", email: "", area: "" });
+  const [titleIndex, setTitleIndex] = useState(0);
+  const [animating, setAnimating] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.company) return;
     setFormState("success");
   };
+
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    timerRef.current = setTimeout(() => {
+      setTitleIndex((i) => (i === 0 ? 1 : 0));
+    }, 4000);
+    return () => {
+      if (timerRef.current) clearTimeout(timerRef.current);
+    };
+  }, [titleIndex]);
 
   if (formState === "success") {
     return (
@@ -59,15 +74,15 @@ export default function HomePage() {
         <div className={styles.heroInner}>
           <div className={styles.heroContent}>
             <p className={styles.heroEyebrow}>跨境外贸网站本地化专家</p>
-            <h1 className={`${styles.heroTitle} font-serif-en`}>
-              让出海有温度
+            <h1 className={`${styles.heroTitle} ${styles.heroTitleFlip}`}>
+              {heroTitles[titleIndex]}
             </h1>
             <p className={styles.heroSubtitle}>
-              让全球用户感受品牌的温度——文渡帮助中国出海企业将英文网站从"准确翻译"升级为"温暖触达"。
+              文渡Wendo帮助中国出海企业温暖触达全球。
             </p>
             <div className={styles.heroCtas}>
               <a href="/contact" className={styles.primaryBtn}>
-                报名抢先体验计划
+                报名体验
               </a>
               <a href="/product" className={styles.secondaryBtn}>
                 了解产品 →
