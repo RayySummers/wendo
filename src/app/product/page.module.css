@@ -11,30 +11,15 @@
   background: var(--color-bg-hero);
 }
 
-.heroInner {
-  display: flex;
-  align-items: center;
-  gap: 64px;
-  max-width: 1200px;
-  width: 100%;
-}
-
 .heroContent {
-  flex: 1;
+  max-width: 800px;
+  margin: 0 auto;
+  width: 100%;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
   gap: 24px;
-}
-
-.heroLogo {
-  flex-shrink: 0;
-}
-
-.heroLogoImg {
-  width: 400px;
-  height: 400px;
-  object-fit: contain;
-  opacity: 0.8;
 }
 
 .heroEyebrow {
@@ -131,7 +116,7 @@
   font-family: var(--font-body);
   color: var(--color-primary);
   line-height: 1;
-  width: 140px;
+  width: 125px;
   flex-shrink: 0;
   text-align: left;
 }

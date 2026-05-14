@@ -102,28 +102,17 @@ export default function ProductPage() {
   return (
     <div className={styles.page}>
       <section className={styles.hero}>
-        <div className={styles.heroInner}>
-          <div className={styles.heroContent}>
-            <p className={styles.heroEyebrow}>产品介绍</p>
-            <h1 className={`${styles.heroTitle} font-serif-en`}>
-              让全球用户<br />感受品牌的温度
-            </h1>
-            <p className={styles.heroSubtitle}>
-              文渡将 AI 与跨文化商务智能结合，通过对话式交互帮助中国出海企业打造真正"入乡随俗"的英文品牌网站——不只是准确，更是温暖触达。
-            </p>
-            <a href="/contact" className={styles.primaryBtn}>
-              立即体验 →
-            </a>
-          </div>
-          <div className={styles.heroLogo}>
-            <img
-              src="/wendo_logo_vectorized.svg"
-              alt="文渡 Wendo"
-              width={400}
-              height={400}
-              className={styles.heroLogoImg}
-            />
-          </div>
+        <div className={styles.heroContent}>
+          <p className={styles.heroEyebrow}>产品介绍</p>
+          <h1 className={`${styles.heroTitle} font-serif-en`}>
+            让全球用户<br />感受品牌的温度
+          </h1>
+          <p className={styles.heroSubtitle}>
+            文渡将 AI 与跨文化商务智能结合，通过对话式交互帮助中国出海企业打造真正"入乡随俗"的英文品牌网站——不只是准确，更是温暖触达。
+          </p>
+          <a href="/contact" className={styles.primaryBtn}>
+            报名体验
+          </a>
         </div>
       </section>
 
@@ -151,7 +140,7 @@ export default function ProductPage() {
 
       <section className={styles.dimensions}>
         <div className={styles.dimensionsHeader}>
-          <h2 className={`${styles.sectionTitle} font-serif-en`}>Four Diagnostic Dimensions</h2>
+          <h2 className={`${styles.sectionTitle} font-serif-en`}>四大诊断维度</h2>
           <p className={styles.sectionSubtitle}>标准化分维度量化评分机制，每个维度独立评分，最终汇总生成总分</p>
         </div>
         <div className={styles.dimensionsGrid}>
@@ -171,7 +160,7 @@ export default function ProductPage() {
 
       <section className={styles.process}>
         <div className={styles.processHeader}>
-          <h2 className={`${styles.sectionTitle} font-serif-en`}>How It Works</h2>
+          <h2 className={`${styles.sectionTitle} font-serif-en`}>工作原理</h2>
           <p className={styles.sectionSubtitle}>系统通过 RAG 检索专业知识库，Subagent 逐段完成问题识别与评分</p>
         </div>
         <div className={styles.processFlow}>

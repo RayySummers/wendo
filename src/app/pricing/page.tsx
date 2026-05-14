@@ -159,7 +159,7 @@ export default function PricingPage() {
 
       <section className={styles.note}>
         <div className={styles.noteContent}>
-          <h2 className={`${styles.noteTitle} font-serif-en`}>Common Questions</h2>
+          <h2 className={`${styles.noteTitle} font-serif-en`}>常见问题</h2>
           <div className={styles.noteGrid}>
             {[
               {

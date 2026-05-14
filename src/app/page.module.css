@@ -6,21 +6,39 @@
   min-height: calc(100vh - var(--nav-height));
   display: flex;
   align-items: center;
+  justify-content: center;
   padding: 80px 24px;
   position: relative;
   overflow: hidden;
   background: var(--color-bg-hero);
 }
 
-.heroContent {
+.heroInner {
+  display: flex;
+  align-items: center;
+  gap: 64px;
   max-width: 1200px;
-  margin: 0 auto;
   width: 100%;
+}
+
+.heroContent {
+  flex: 1;
   display: flex;
   flex-direction: column;
   gap: 24px;
   position: relative;
   z-index: 1;
+}
+
+.heroLogo {
+  flex-shrink: 0;
+}
+
+.heroLogoImg {
+  width: 400px;
+  height: 400px;
+  object-fit: contain;
+  opacity: 0.8;
 }
 
 .heroEyebrow {

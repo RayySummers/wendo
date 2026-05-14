@@ -56,27 +56,33 @@ export default function HomePage() {
   return (
     <div className={styles.page}>
       <section className={styles.hero}>
-        <div className={styles.heroContent}>
-          <p className={styles.heroEyebrow}>跨境外贸网站本地化专家</p>
-          <h1 className={`${styles.heroTitle} font-serif-en`}>
-            让出海有温度
-          </h1>
-          <p className={styles.heroSubtitle}>
-            让全球用户感受品牌的温度——文渡帮助中国出海企业将英文网站从"准确翻译"升级为"温暖触达"。
-          </p>
-          <div className={styles.heroCtas}>
-            <a href="/contact" className={styles.primaryBtn}>
-              报名抢先体验计划
-            </a>
-            <a href="/product" className={styles.secondaryBtn}>
-              了解产品 →
-            </a>
+        <div className={styles.heroInner}>
+          <div className={styles.heroContent}>
+            <p className={styles.heroEyebrow}>跨境外贸网站本地化专家</p>
+            <h1 className={`${styles.heroTitle} font-serif-en`}>
+              让出海有温度
+            </h1>
+            <p className={styles.heroSubtitle}>
+              让全球用户感受品牌的温度——文渡帮助中国出海企业将英文网站从"准确翻译"升级为"温暖触达"。
+            </p>
+            <div className={styles.heroCtas}>
+              <a href="/contact" className={styles.primaryBtn}>
+                报名抢先体验计划
+              </a>
+              <a href="/product" className={styles.secondaryBtn}>
+                了解产品 →
+              </a>
+            </div>
           </div>
-        </div>
-        <div className={styles.heroDecor} aria-hidden="true">
-          <div className={styles.decorCircle1} />
-          <div className={styles.decorCircle2} />
-          <div className={styles.decorLine} />
+          <div className={styles.heroLogo}>
+            <img
+              src="/wendo_logo_vectorized.svg"
+              alt="文渡 Wendo"
+              width={400}
+              height={400}
+              className={styles.heroLogoImg}
+            />
+          </div>
         </div>
       </section>
 
@@ -92,7 +98,7 @@ export default function HomePage() {
 
       <section className={styles.steps}>
         <div className={styles.stepsHeader}>
-          <h2 className={`${styles.sectionTitle} font-serif-en`}>How It Works</h2>
+          <h2 className={`${styles.sectionTitle} font-serif-en`}>工作原理</h2>
           <p className={styles.sectionSubtitle}>像和 ChatGPT 对话一样简单，获得专业的文化适配诊断报告</p>
         </div>
         <div className={styles.stepsGrid}>
@@ -109,7 +115,7 @@ export default function HomePage() {
       <section className={styles.cta}>
         <div className={styles.ctaCard}>
           <div className={styles.ctaContent}>
-            <h2 className={`${styles.ctaTitle} font-serif-en`}>Ready to Start?</h2>
+            <h2 className={`${styles.ctaTitle} font-serif-en`}>想要免费体验吗？</h2>
             <p className={styles.ctaText}>
               首批体验名额开放中，提交您的诊断需求，我们将尽快与您联系。
             </p>

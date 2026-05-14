@@ -8,7 +8,7 @@ const navLinks = [
   { href: "/", label: "首页" },
   { href: "/product", label: "产品" },
   { href: "/pricing", label: "定价" },
-  { href: "/about", label: "关于我们" },
+  { href: "/about", label: "关于" },
   { href: "/contact", label: "联系我们" },
 ];
 
