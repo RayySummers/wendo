@@ -53,11 +53,13 @@ export default function Navbar() {
     <header className={`${styles.navbar} ${scrolled ? styles.scrolled : ""} ${visible ? styles.visible : styles.hidden}`}>
       <nav className={styles.nav}>
         <Link href="/" className={styles.logo}>
-          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-            <circle cx="14" cy="14" r="13" stroke="currentColor" strokeWidth="1.5" />
-            <path d="M8 14c0-3.314 2.686-6 6-6s6 2.686 6 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-            <path d="M9 17c0 2.761 2.239 5 5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-          </svg>
+          <img
+            src="/wendo_logo_vectorized.svg"
+            alt="文渡 Wendo"
+            width={28}
+            height={28}
+            className={styles.logoIcon}
+          />
           <span className={styles.logoText}>文渡 Wendo</span>
         </Link>
 

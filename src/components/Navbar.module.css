@@ -44,6 +44,12 @@
   font-family: var(--font-body);
 }
 
+.logoIcon {
+  width: 28px;
+  height: 28px;
+  display: block;
+}
+
 .navLinks {
   display: flex;
   align-items: center;
