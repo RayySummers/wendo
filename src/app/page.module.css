@@ -34,11 +34,22 @@
   flex-shrink: 0;
 }
 
+.heroLogoMobile {
+  display: none;
+}
+
 .heroLogoImg {
   width: 400px;
   height: 400px;
   object-fit: contain;
   opacity: 0.8;
+}
+
+.heroLogoImgMobile {
+  width: 280px;
+  height: 280px;
+  object-fit: contain;
+  opacity: 0.85;
 }
 
 .heroEyebrow {
@@ -373,9 +384,10 @@
     display: none;
   }
 
-  .heroLogoImg {
-    width: 200px;
-    height: 200px;
+  .heroLogoMobile {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
   }
 
   .heroDecor {

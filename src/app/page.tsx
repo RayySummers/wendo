@@ -74,6 +74,15 @@ export default function HomePage() {
       <section className={styles.hero}>
         <div className={styles.heroInner}>
           <div className={styles.heroContent}>
+            <div className={styles.heroLogoMobile}>
+              <img
+                src="/wendo/wendo_logo_vectorized.svg"
+                alt="文渡 Wendo"
+                width={280}
+                height={280}
+                className={styles.heroLogoImgMobile}
+              />
+            </div>
             <p className={styles.heroEyebrow}>跨境外贸网站本地化专家</p>
             <h1 className={`${styles.heroTitle}`}>
               让出海有<br />
