@@ -95,7 +95,7 @@ export default function HomePage() {
           </div>
           <div className={styles.heroLogo}>
             <img
-              src="/wendo_logo_vectorized.svg"
+              src="/wendo/wendo_logo_vectorized.svg"
               alt="文渡 Wendo"
               width={400}
               height={400}
