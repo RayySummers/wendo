@@ -1,39 +1,23 @@
 "use client";
 
-import { useState } from "react";
+import { useForm, ValidationError } from "@formspree/react";
 import styles from "./page.module.css";
 
-type FormState = "idle" | "success";
-
 export default function ContactPage() {
-  const [formState, setFormState] = useState<FormState>("idle");
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    company: "",
-    message: "",
-  });
+  const [state, handleSubmit] = useForm("mzdoldej");
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!formData.name || !formData.email || !formData.message) return;
-    setFormState("success");
-  };
-
-  return (
-    <div className={styles.page}>
-      <section className={styles.hero}>
-        <div className={styles.heroContent} style={{ gap: 0 }}>
-          <h1 className={styles.heroTitle} style={{ fontFamily: 'var(--font-body)', textAlign: 'center' }}>
-            联系我们
-          </h1>
-        </div>
-      </section>
-
-      <section className={styles.main}>
-        <div className={styles.formSection}>
-          <h2 className={styles.formTitle}>发送消息</h2>
-          {formState === "success" ? (
+  if (state.succeeded) {
+    return (
+      <div className={styles.page}>
+        <section className={styles.hero}>
+          <div className={styles.heroContent} style={{ gap: 0 }}>
+            <h1 className={styles.heroTitle} style={{ fontFamily: 'var(--font-body)', textAlign: 'center' }}>
+              联系我们
+            </h1>
+          </div>
+        </section>
+        <section className={styles.main}>
+          <div className={styles.formSection}>
             <div className={styles.successCard}>
               <div className={styles.successIcon}>
                 <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -49,65 +33,85 @@ export default function ContactPage() {
                 期待与您建立连接 🫡
               </p>
             </div>
-          ) : (
-            <form onSubmit={handleSubmit} className={styles.form} noValidate>
-              <div className={styles.formRow}>
-                <div className={styles.formGroup}>
-                  <label htmlFor="name" className={styles.label}>姓名 *</label>
-                  <input
-                    id="name"
-                    type="text"
-                    className={styles.input}
-                    placeholder="请输入您的姓名"
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    required
-                  />
-                </div>
-                <div className={styles.formGroup}>
-                  <label htmlFor="email" className={styles.label}>邮箱 *</label>
-                  <input
-                    id="email"
-                    type="email"
-                    className={styles.input}
-                    placeholder="your@company.com"
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    required
-                  />
-                </div>
-              </div>
+          </div>
+        </section>
+      </div>
+    );
+  }
 
+  return (
+    <div className={styles.page}>
+      <section className={styles.hero}>
+        <div className={styles.heroContent} style={{ gap: 0 }}>
+          <h1 className={styles.heroTitle} style={{ fontFamily: 'var(--font-body)', textAlign: 'center' }}>
+            联系我们
+          </h1>
+        </div>
+      </section>
+
+      <section className={styles.main}>
+        <div className={styles.formSection}>
+          <h2 className={styles.formTitle}>发送消息</h2>
+          <form onSubmit={handleSubmit} className={styles.form} noValidate>
+            <div className={styles.formRow}>
               <div className={styles.formGroup}>
-                <label htmlFor="company" className={styles.label}>公司名称</label>
+                <label htmlFor="name" className={styles.label}>姓名 *</label>
                 <input
-                  id="company"
+                  id="name"
                   type="text"
+                  name="name"
                   className={styles.input}
-                  placeholder="贵公司名称（可选）"
-                  value={formData.company}
-                  onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                />
-              </div>
-
-              <div className={styles.formGroup}>
-                <label htmlFor="message" className={styles.label}>留言内容 *</label>
-                <textarea
-                  id="message"
-                  className={styles.textarea}
-                  placeholder="请描述您的问题或需求..."
-                  rows={5}
-                  value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  placeholder="请输入您的姓名"
                   required
                 />
+                <ValidationError prefix="姓名" field="name" errors={state.errors} />
               </div>
+              <div className={styles.formGroup}>
+                <label htmlFor="email" className={styles.label}>邮箱 *</label>
+                <input
+                  id="email"
+                  type="email"
+                  name="email"
+                  className={styles.input}
+                  placeholder="your@company.com"
+                  required
+                />
+                <ValidationError prefix="邮箱" field="email" errors={state.errors} />
+              </div>
+            </div>
 
-              <button type="submit" className={styles.submitBtn}>
-                发送消息
-              </button>
-            </form>
-          )}
+            <div className={styles.formGroup}>
+              <label htmlFor="company" className={styles.label}>公司名称</label>
+              <input
+                id="company"
+                type="text"
+                name="company"
+                className={styles.input}
+                placeholder="贵公司名称（可选）"
+              />
+            </div>
+
+            <div className={styles.formGroup}>
+              <label htmlFor="message" className={styles.label}>留言内容 *</label>
+              <textarea
+                id="message"
+                name="message"
+                className={styles.textarea}
+                placeholder="请描述您的问题或需求..."
+                rows={5}
+                required
+              />
+              <ValidationError prefix="留言" field="message" errors={state.errors} />
+            </div>
+
+            <button
+              type="submit"
+              className={styles.submitBtn}
+              disabled={state.submitting}
+            >
+              {state.submitting ? "发送中..." : "发送消息"}
+            </button>
+          </form>
         </div>
 
         <aside className={styles.sidebar}>
