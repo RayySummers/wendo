@@ -101,116 +101,82 @@
 }
 
 .branchSection {
-  margin-top: 16px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
+  gap: 0;
+  margin-top: 8px;
 }
 
 .branchDivider {
-  width: 60px;
-  padding: 4px 12px;
-  background: var(--color-bg-secondary);
-  border-radius: var(--radius-full);
-  display: flex;
-  justify-content: center;
-}
-
-.branchLabel {
   font-family: var(--font-ui);
   font-size: 0.7rem;
   font-weight: 600;
   color: var(--color-text-muted);
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  padding: 6px 16px;
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-full);
+  margin: 8px 0;
 }
 
-.branchRow {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+.branchGrid {
   width: 100%;
   max-width: 320px;
-}
-
-.branchTop,
-.branchBottom {
-  display: flex;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 12px;
-  padding: 0 8px;
+  margin: 8px 0;
 }
 
-.branchTop {
-  flex-direction: row-reverse;
-}
-
-.branchConnector {
-  width: 24px;
-  height: 2px;
-  background: var(--color-primary);
-  opacity: 0.5;
+.branchLeft,
+.branchRight {
+  display: flex;
+  justify-content: center;
 }
 
 .branchStep {
-  flex: 1;
-  padding: 12px 16px;
+  width: 100%;
+  padding: 12px 12px;
   background: var(--color-bg-card);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
-}
-
-.branchStepLabel {
   font-family: var(--font-ui);
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 500;
   color: var(--color-text);
   text-align: center;
-}
-
-.mergeConnectors {
-  display: flex;
-  gap: 50%;
-  width: 100%;
-  max-width: 320px;
-  margin-top: 8px;
-}
-
-.mergeLine {
-  width: 2px;
-  height: 24px;
-  background: var(--color-text-muted);
-  opacity: 0.3;
 }
 
 .endNode {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
-  margin-top: 16px;
-  padding: 16px 32px;
+  gap: 10px;
+  padding: 14px 28px;
   background: var(--color-bg-secondary);
   border-radius: var(--radius-full);
   border: 1px solid var(--color-border);
+  margin-top: 8px;
 }
 
 .endIcon {
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
   display: flex;
   align-items: center;
   justify-content: center;
   background: var(--color-primary);
   color: white;
   border-radius: 50%;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .endLabel {
   font-family: var(--font-ui);
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-weight: 600;
   color: var(--color-text);
 }
@@ -222,14 +188,20 @@
 
   .step {
     max-width: 100%;
-    padding: 14px 16px;
+    padding: 12px 14px;
   }
 
   .stepLabel {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
   }
 
-  .branchRow {
+  .branchGrid {
     max-width: 100%;
+    gap: 8px;
+  }
+
+  .branchStep {
+    font-size: 0.75rem;
+    padding: 10px 8px;
   }
 }
