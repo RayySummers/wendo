@@ -14,7 +14,11 @@ const treeData: TreeNode[] = [
   {
     name: "cases",
     label: "cases/",
-    children: ["light-industry/", "electronics/", "fashion/"],
+    children: [
+      { name: "light-industry", label: "light-industry/", children: [] },
+      { name: "electronics", label: "electronics/", children: [] },
+      { name: "fashion", label: "fashion/", children: [] },
+    ],
   },
   {
     name: "regions",
@@ -32,7 +36,9 @@ const treeData: TreeNode[] = [
   {
     name: "standards",
     label: "standards/",
-    children: ["global.md"],
+    children: [
+      { name: "global", label: "global.md", children: [] },
+    ],
   },
   {
     name: "terminology",
@@ -52,9 +58,17 @@ interface TreeItemProps {
 }
 
 function TreeItem({ node, depth }: TreeItemProps) {
+  const isFile = node.label.endsWith(".md");
   const [isOpen, setIsOpen] = useState(false);
   const hasChildren = node.children.length > 0;
-  const isFolder = typeof node.children[0] !== "string";
+
+  if (isFile) {
+    return (
+      <div className={styles.file} style={{ paddingLeft: `${12 + depth * 16}px` }}>
+        {node.label}
+      </div>
+    );
+  }
 
   return (
     <div className={styles.item}>
