@@ -132,6 +132,7 @@ const knowledgeBase = {
 
 export default function ProductPage() {
   const animatingRef = useRef(false);
+  const treeAnimatingRef = useRef(false);
 
   const toggleFaq = useCallback((e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
@@ -155,7 +156,7 @@ export default function ProductPage() {
         details.removeAttribute("open");
         answer.style.maxHeight = "";
         answer.style.opacity = "";
-        animatingRef.current = false;
+        treeAnimatingRef.current = false;
       };
     } else {
       details.setAttribute("open", "");
@@ -174,7 +175,7 @@ export default function ProductPage() {
           animation.onfinish = () => {
             answer.style.maxHeight = height + "px";
             answer.style.opacity = "1";
-            animatingRef.current = false;
+            treeAnimatingRef.current = false;
           };
         });
       });
@@ -188,8 +189,8 @@ export default function ProductPage() {
     const children = details.querySelector(`.${styles.treeChildren}`) as HTMLElement;
     const subChildren = details.querySelectorAll(`.${styles.treeSubChildren}`) as NodeListOf<HTMLElement>;
 
-    if (animatingRef.current) return;
-    animatingRef.current = true;
+    if (treeAnimatingRef.current) return;
+    treeAnimatingRef.current = true;
 
     if (details.hasAttribute("open")) {
       const height = children.scrollHeight;
@@ -208,7 +209,7 @@ export default function ProductPage() {
           el.style.maxHeight = "";
           el.style.opacity = "";
         });
-        animatingRef.current = false;
+        treeAnimatingRef.current = false;
       };
     } else {
       details.setAttribute("open", "");
@@ -235,7 +236,7 @@ export default function ProductPage() {
               el.style.maxHeight = el.scrollHeight + "px";
               el.style.opacity = "1";
             });
-            animatingRef.current = false;
+            treeAnimatingRef.current = false;
           };
         });
       });
