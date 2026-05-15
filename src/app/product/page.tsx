@@ -65,14 +65,14 @@ const knowledgeBase = {
       title: "Cases",
       subtitle: "品牌案例库",
       count: "12+",
-      regions: ["🇺🇸 美国", "🇬🇧 欧洲", "🇯🇵 日本", "🇸🇬 东南亚"],
+      regions: ["🇺🇸 美国", "🇪🇺 欧盟", "🇯🇵 日本", "🇸🇬 东南亚"],
     },
     {
       icon: "🌍",
       title: "Regions",
       subtitle: "地区知识库",
       count: "30+",
-      regions: ["🇺🇸 美国", "🇬🇧 欧洲", "🇯🇵 日本", "🇸🇬 东南亚"],
+      regions: ["🇺🇸 美国", "🇪🇺 欧盟", "🇯🇵 日本", "🇸🇬 东南亚"],
     },
     {
       icon: "📋",

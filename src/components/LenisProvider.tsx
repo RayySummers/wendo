@@ -10,7 +10,7 @@ export default function LenisProvider({
 }) {
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 0.96,
+      duration: 0.6,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
     });
 
