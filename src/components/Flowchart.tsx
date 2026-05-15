@@ -17,46 +17,66 @@ const steps = [
   { id: "11", label: "服务结束", type: "end" },
 ];
 
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.08,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: "spring" as const,
+      stiffness: 120,
+      damping: 14,
+    },
+  },
+};
+
+const connectorVariants = {
+  hidden: { scaleY: 0 },
+  visible: {
+    scaleY: 1,
+    transition: { duration: 0.3, type: "tween" as const },
+  },
+};
+
 export default function Flowchart() {
   return (
-    <div className={styles.container}>
+    <motion.div
+      className={styles.container}
+      variants={containerVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-80px" }}
+    >
       <div className={styles.timeline}>
         {steps.map((step, index) => (
           <div key={step.id} className={styles.stepWrapper}>
-            {index > 0 && <motion.div
-              className={styles.connector}
-              initial={{ scaleY: 0 }}
-              whileInView={{ scaleY: 1 }}
-              transition={{ duration: 0.3 }}
-              viewport={{ once: true }}
-              style={{ transformOrigin: "top" }}
-            />}
+            {index > 0 && (
+              <motion.div
+                className={styles.connector}
+                variants={connectorVariants}
+                style={{ transformOrigin: "top" }}
+              />
+            )}
             <motion.div
               className={`${styles.step} ${styles[step.type.replace("-", "")]}`}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{
-                delay: index * 0.07,
-                type: "spring",
-                stiffness: 120,
-                damping: 14,
-              }}
-              whileHover={{ x: 6 }}
-              viewport={{ once: true, margin: "-40px" }}
+              variants={itemVariants}
+              whileHover={{ x: 6, transition: { type: "spring", stiffness: 300 } }}
             >
-              <motion.div
-                className={styles.stepNumber}
-                whileInView={{ scale: [1, 1.1, 1] }}
-                transition={{ delay: index * 0.07 + 0.2, duration: 0.3 }}
-                viewport={{ once: true }}
-              >
-                {step.id}
-              </motion.div>
+              <div className={styles.stepNumber}>{step.id}</div>
               <div className={styles.stepLabel}>{step.label}</div>
             </motion.div>
           </div>
         ))}
       </div>
-    </div>
+    </motion.div>
   );
 }
