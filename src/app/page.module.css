@@ -185,34 +185,34 @@
   background: var(--color-bg-secondary);
 }
 
-.statsGrid {
+.statsCard {
   max-width: 400px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 24px;
-}
-
-.statCard {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 8px;
-  padding: 32px 24px;
+  gap: 20px;
+  padding: 28px 32px;
   background: var(--color-bg-card);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
-  text-align: center;
   transition: transform var(--transition-fast), box-shadow var(--transition-fast);
 }
 
-.statCard:hover {
+.statsCard:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-md);
 }
 
 .statIcon {
-  font-size: 2rem;
+  font-size: 3.5rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.statContent {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .statValue {
@@ -413,8 +413,16 @@
     padding: 32px 16px;
   }
 
-  .statsGrid {
-    gap: 16px;
+  .statsCard {
+    padding: 20px 24px;
+  }
+
+  .statIcon {
+    font-size: 2.5rem;
+  }
+
+  .statValue {
+    font-size: 2rem;
   }
 
   .steps {

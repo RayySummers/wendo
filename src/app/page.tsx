@@ -143,9 +143,9 @@ export default function HomePage() {
       </section>
 
       <section className={styles.stats}>
-        <div className={styles.statsGrid}>
-          <div className={styles.statCard}>
-            <span className={styles.statIcon}>🌏</span>
+        <div className={styles.statsCard}>
+          <span className={styles.statIcon}>🌏</span>
+          <div className={styles.statContent}>
             <span className={styles.statValue}>30+</span>
             <span className={styles.statLabel}>覆盖国家和地区</span>
           </div>
