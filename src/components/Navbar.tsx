@@ -5,11 +5,11 @@ import Link from "next/link";
 import styles from "./Navbar.module.css";
 
 const navLinks = [
-  { href: "/wendo/", label: "首页" },
-  { href: "/wendo/product", label: "产品" },
-  { href: "/wendo/pricing", label: "定价" },
-  { href: "/wendo/about", label: "关于" },
-  { href: "/wendo/contact", label: "联系我们" },
+  { href: "/", label: "首页" },
+  { href: "/product", label: "产品" },
+  { href: "/pricing", label: "定价" },
+  { href: "/about", label: "关于" },
+  { href: "/contact", label: "联系我们" },
 ];
 
 export default function Navbar() {
@@ -43,7 +43,7 @@ export default function Navbar() {
   return (
     <header className={`${styles.navbar} ${scrolled ? styles.scrolled : ""}`}>
       <nav className={styles.nav}>
-        <Link href="/wendo/" className={styles.logo}>
+        <Link href="/" className={styles.logo}>
           <img
             src="/wendo/wendo_logo_vectorized.svg"
             alt="文渡 Wendo"
