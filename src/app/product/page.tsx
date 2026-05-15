@@ -57,6 +57,79 @@ const faq = [
   },
 ];
 
+const knowledgeBase = {
+  categories: [
+    {
+      icon: "📁",
+      title: "Cases",
+      subtitle: "品牌案例库",
+      count: "12+",
+      regions: ["🇺🇸 美国", "🇬🇧 欧洲", "🇯🇵 日本", "🇸🇬 东南亚"],
+    },
+    {
+      icon: "🌍",
+      title: "Regions",
+      subtitle: "地区知识库",
+      count: "30+",
+      regions: ["🇺🇸 美国", "🇬🇧 欧洲", "🇯🇵 日本", "🇦🇺 澳新"],
+    },
+    {
+      icon: "📋",
+      title: "Standards",
+      subtitle: "诊断标准",
+      count: "4",
+      regions: ["通用标准", "行业标准", "地区标准", "品牌标准"],
+    },
+    {
+      icon: "📖",
+      title: "Terminology",
+      subtitle: "行业术语库",
+      count: "4+",
+      regions: ["科技", "金融", "医疗", "法律"],
+    },
+  ],
+  tree: [
+    {
+      name: "references",
+      label: "references/",
+      children: [
+        {
+          name: "cases",
+          label: "cases/",
+          children: [
+            { name: "light-industry", label: "light-industry/", children: [] },
+            { name: "electronics", label: "electronics/", children: [] },
+            { name: "fashion", label: "fashion/", children: [] },
+          ],
+        },
+        {
+          name: "regions",
+          label: "regions/",
+          children: [
+            { name: "united-states", label: "united-states/", children: ["newyork.md", "california.md", "texas.md"] },
+            { name: "europe", label: "europe/", children: ["uk.md", "germany.md", "france.md"] },
+            { name: "asiapacific", label: "asiapacific/", children: ["japan.md", "korea.md", "singapore.md", "vietnam.md"] },
+            { name: "africa", label: "africa/", children: [] },
+            { name: "middleeast", label: "middleeast/", children: [] },
+            { name: "latin-america", label: "latin-america/", children: [] },
+            { name: "canada", label: "canada/", children: [] },
+          ],
+        },
+        {
+          name: "standards",
+          label: "standards/",
+          children: [{ name: "global", label: "global.md", children: [] }],
+        },
+        {
+          name: "terminology",
+          label: "terminology/",
+          children: ["tech.md", "finance.md", "medical.md", "legal.md"].map(f => ({ name: f.replace('.md',''), label: f, children: [] })),
+        },
+      ],
+    },
+  ],
+};
+
 export default function ProductPage() {
   const animatingRef = useRef(false);
 
@@ -198,6 +271,71 @@ export default function ProductPage() {
               <h3>报告生成</h3>
               <p>汇总所有问题，生成结构化诊断报告与 before & after 对比分析。</p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className={styles.knowledge}>
+        <div className={styles.knowledgeHeader}>
+          <h2 className={`${styles.sectionTitle} font-serif-en`}>深度知识库</h2>
+          <p className={styles.sectionSubtitle}>跨文化诊断的专业底气</p>
+        </div>
+
+        <div className={styles.knowledgeCards}>
+          {knowledgeBase.categories.map((cat) => (
+            <div key={cat.title} className={styles.knowledgeCard}>
+              <div className={styles.knowledgeCardTop}>
+                <span className={styles.knowledgeIcon}>{cat.icon}</span>
+                <span className={styles.knowledgeCount}>{cat.count}</span>
+              </div>
+              <h3 className={styles.knowledgeTitle}>{cat.title}</h3>
+              <p className={styles.knowledgeSubtitle}>{cat.subtitle}</p>
+              <div className={styles.knowledgeRegions}>
+                {cat.regions.map((r) => (
+                  <span key={r} className={styles.knowledgeRegion}>{r}</span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className={styles.knowledgeTree}>
+          <div className={styles.treeHeader}>
+            <span className={styles.treeTitle}>知识库结构</span>
+            <span className={styles.treeHint}>点击展开查看详情</span>
+          </div>
+          <div className={styles.treeList}>
+            {knowledgeBase.tree[0].children.map((folder) => (
+              <details key={folder.name} className={styles.treeItem}>
+                <summary className={styles.treeSummary}>
+                  <span className={styles.treeFolder}>{folder.label}</span>
+                  <span className={styles.treeArrow}>▶</span>
+                </summary>
+                <div className={styles.treeChildren}>
+                  {folder.children.map((child) => (
+                    typeof child === 'string' ? (
+                      <span key={child} className={styles.treeFile}>{child}</span>
+                    ) : (
+                      <details key={child.name} className={styles.treeSubItem}>
+                        <summary className={styles.treeSubSummary}>
+                          <span className={styles.treeFolder}>{child.label}</span>
+                          {child.children && child.children.length > 0 && (
+                            <span className={styles.treeArrow}>▶</span>
+                          )}
+                        </summary>
+                        {child.children && child.children.length > 0 && (
+                          <div className={styles.treeSubChildren}>
+                            {child.children.map((file) => (
+                              <span key={file} className={styles.treeFile}>{file}</span>
+                            ))}
+                          </div>
+                        )}
+                      </details>
+                    )
+                  ))}
+                </div>
+              </details>
+            ))}
           </div>
         </div>
       </section>
