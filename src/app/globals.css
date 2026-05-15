@@ -53,6 +53,8 @@
 
 /* --- COLOR TOKENS (Dark Mode) --- */
 [data-theme="dark"] {
+  --color-primary: #7096EC;
+  --color-primary-hover: #5a7fd4;
   --color-bg: #1e1e1e;
   --color-bg-secondary: #1e1e1e;
   --color-bg-card: #2a2a2a;
@@ -71,7 +73,7 @@
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
   --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
   --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
-  --shadow-glow: 0 0 24px rgba(25, 67, 193, 0.4);
+  --shadow-glow: 0 0 24px rgba(112, 150, 236, 0.4);
 }
 
 /* --- RESET & BASE --- */

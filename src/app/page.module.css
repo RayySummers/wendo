@@ -84,10 +84,6 @@
 .heroWord {
   display: block;
   animation: wordSlide 0.4s ease-in-out;
-  color: var(--color-primary);
-}
-
-[data-theme="dark"] .heroWord {
   color: #7096EC;
 }
 
