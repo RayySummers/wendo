@@ -25,7 +25,7 @@ const plans = [
     price: "288",
     priceNote: "元 / 月",
     tag: "推荐",
-    tagColor: "#7096EC",
+    tagColor: "#1943c1",
     desc: "适合有常规诊断需求的小型企业",
     features: [
       "每月 25 次诊断（每天 1 次）",
