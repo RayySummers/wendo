@@ -1,90 +1,235 @@
-@keyframes drawLine {
-  to {
-    stroke-dashoffset: 0;
-  }
-}
-
-@keyframes fadeInNode {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 .container {
-  width: 100%;
-  max-width: 700px;
+  max-width: 500px;
   margin: 0 auto;
-  overflow-x: auto;
-  padding: 24px 0;
+  padding: 0 24px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
-.svg {
+.container.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.stepWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.connector {
+  width: 2px;
+  height: 32px;
+  background: var(--color-primary);
+  opacity: 0.4;
+}
+
+.step {
   width: 100%;
-  height: auto;
-  min-height: 900px;
+  max-width: 320px;
+  padding: 16px 20px;
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.line {
-  opacity: 0.8;
+.step:hover {
+  transform: translateX(4px);
 }
 
-.node {
-  cursor: default;
+.process {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
-.processNode {
-  fill: var(--color-bg-card);
-  stroke: var(--color-primary);
-  stroke-width: 2;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+.process:hover {
+  border-color: var(--color-primary);
+  box-shadow: 0 4px 16px rgba(25, 67, 193, 0.12);
+}
+
+.start {
+  background: var(--color-primary);
+  box-shadow: 0 4px 16px rgba(25, 67, 193, 0.3);
+}
+
+.start .stepNumber {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.start .stepLabel {
+  color: white;
 }
 
 .diamond {
-  fill: var(--color-bg-card);
-  stroke: var(--color-text-muted);
-  stroke-width: 2;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-text-muted);
+  width: calc(100% - 40px);
+  max-width: 280px;
+  justify-content: center;
+  text-align: center;
 }
 
-.startNode {
-  fill: var(--color-primary);
-  stroke: none;
+.diamond:hover {
+  border-color: var(--color-primary);
+}
+
+.stepNumber {
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  opacity: 0.6;
+  min-width: 24px;
+}
+
+.stepLabel {
+  font-family: var(--font-ui);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-text);
+  line-height: 1.4;
+}
+
+.branchSection {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.branchDivider {
+  width: 60px;
+  padding: 4px 12px;
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-full);
+  display: flex;
+  justify-content: center;
+}
+
+.branchLabel {
+  font-family: var(--font-ui);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.branchRow {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  max-width: 320px;
+}
+
+.branchTop,
+.branchBottom {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 8px;
+}
+
+.branchTop {
+  flex-direction: row-reverse;
+}
+
+.branchConnector {
+  width: 24px;
+  height: 2px;
+  background: var(--color-primary);
+  opacity: 0.5;
+}
+
+.branchStep {
+  flex: 1;
+  padding: 12px 16px;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.branchStepLabel {
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--color-text);
+  text-align: center;
+}
+
+.mergeConnectors {
+  display: flex;
+  gap: 50%;
+  width: 100%;
+  max-width: 320px;
+  margin-top: 8px;
+}
+
+.mergeLine {
+  width: 2px;
+  height: 24px;
+  background: var(--color-text-muted);
+  opacity: 0.3;
 }
 
 .endNode {
-  fill: var(--color-text-muted);
-  stroke: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 16px;
+  padding: 16px 32px;
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-border);
 }
 
-.nodeLabel {
-  font-family: var(--font-ui);
-  font-size: 12px;
-  text-anchor: middle;
-  dominant-baseline: middle;
-  fill: var(--color-text);
-  pointer-events: none;
+.endIcon {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-primary);
+  color: white;
+  border-radius: 50%;
+  font-size: 14px;
 }
 
-.nodeLabelSmall {
+.endLabel {
   font-family: var(--font-ui);
-  font-size: 13px;
-  text-anchor: middle;
-  dominant-baseline: middle;
-  fill: white;
-  pointer-events: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-text);
 }
 
 @media (max-width: 768px) {
   .container {
-    padding: 16px 0;
+    padding: 0 12px;
   }
 
-  .svg {
-    min-height: 600px;
+  .step {
+    max-width: 100%;
+    padding: 14px 16px;
+  }
+
+  .stepLabel {
+    font-size: 0.85rem;
+  }
+
+  .branchRow {
+    max-width: 100%;
   }
 }
