@@ -9,21 +9,23 @@ export const metadata = {
 export default function NotFoundPage() {
   return (
     <div className={styles.page}>
-      <div className={styles.content}>
-        <h1 className={styles.title}>404</h1>
-        <p className={styles.subtitle}>页面未找到</p>
-        <p className={styles.text}>
-          抱歉，您访问的页面不存在或已被移除。
-        </p>
-        <div className={styles.actions}>
-          <Link href="/" className={styles.primaryBtn}>
-            返回首页
-          </Link>
-          <Link href="/contact" className={styles.secondaryBtn}>
-            联系我们
-          </Link>
+      <section className={styles.hero}>
+        <div className={styles.heroContent}>
+          <h1 className={styles.title}>404</h1>
+          <p className={styles.subtitle}>页面未找到</p>
+          <p className={styles.text}>
+            抱歉，您访问的页面不存在或已被移除。
+          </p>
+          <div className={styles.actions}>
+            <Link href="/" className={styles.primaryBtn}>
+              返回首页
+            </Link>
+            <Link href="/contact" className={styles.secondaryBtn}>
+              联系我们
+            </Link>
+          </div>
         </div>
-      </div>
+      </section>
     </div>
   );
 }
