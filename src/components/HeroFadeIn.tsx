@@ -9,6 +9,7 @@ interface HeroFadeInProps {
   subtitle?: string;
   cta?: React.ReactNode;
   align?: "left" | "center";
+  contentClassName?: string;
 }
 
 export default function HeroFadeIn({
@@ -17,12 +18,13 @@ export default function HeroFadeIn({
   subtitle,
   cta,
   align = "left",
+  contentClassName,
 }: HeroFadeInProps) {
   const contentAlign = align === "center" ? styles.center : styles.left;
 
   return (
     <section className={styles.hero}>
-      <div className={`${styles.heroContent} ${contentAlign}`}>
+      <div className={`${styles.heroContent} ${contentAlign} ${contentClassName || ""}`}>
         {eyebrow && (
           <motion.p
             className={styles.eyebrow}
