@@ -1,4 +1,14 @@
+import type { Metadata } from "next";
 import styles from "./page.module.css";
+
+export const metadata: Metadata = {
+  title: "关于文渡 — Wendo 团队与价值观",
+  description: "了解 Wendo 文渡的创立故事、核心团队与价值观。我们是一支专注跨文化商务智能的团队，致力于帮助中国品牌温暖出海。",
+  openGraph: {
+    title: "关于文渡 — Wendo 团队与价值观",
+    description: "了解 Wendo 文渡的创立故事、核心团队与价值观。",
+  },
+};
 
 const team = [
   {

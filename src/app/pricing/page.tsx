@@ -1,4 +1,14 @@
+import type { Metadata } from "next";
 import styles from "./page.module.css";
+
+export const metadata: Metadata = {
+  title: "定价方案 — Wendo 文渡",
+  description: "Wendo 文渡提供从免费基础版到企业定制版的多种定价方案，满足不同规模出海企业的本地化诊断需求。",
+  openGraph: {
+    title: "定价方案 — Wendo 文渡",
+    description: "从免费基础版到企业定制版，选择适合您的本地化诊断方案。",
+  },
+};
 
 const plans = [
   {
