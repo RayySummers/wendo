@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { motion } from "motion/react";
 import styles from "./flowchart.module.css";
 
 const steps = [
@@ -18,38 +18,42 @@ const steps = [
 ];
 
 export default function Flowchart() {
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          container.classList.add(styles.visible);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.2 }
-    );
-
-    observer.observe(container);
-    return () => observer.disconnect();
-  }, []);
-
   return (
-    <div ref={containerRef} className={styles.container}>
+    <div className={styles.container}>
       <div className={styles.timeline}>
         {steps.map((step, index) => (
           <div key={step.id} className={styles.stepWrapper}>
-            {index > 0 && <div className={styles.connector} />}
-            <div
+            {index > 0 && <motion.div
+              className={styles.connector}
+              initial={{ scaleY: 0 }}
+              whileInView={{ scaleY: 1 }}
+              transition={{ duration: 0.3 }}
+              viewport={{ once: true }}
+              style={{ transformOrigin: "top" }}
+            />}
+            <motion.div
               className={`${styles.step} ${styles[step.type.replace("-", "")]}`}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{
+                delay: index * 0.07,
+                type: "spring",
+                stiffness: 120,
+                damping: 14,
+              }}
+              whileHover={{ x: 6 }}
+              viewport={{ once: true, margin: "-40px" }}
             >
-              <div className={styles.stepNumber}>{step.id}</div>
+              <motion.div
+                className={styles.stepNumber}
+                whileInView={{ scale: [1, 1.1, 1] }}
+                transition={{ delay: index * 0.07 + 0.2, duration: 0.3 }}
+                viewport={{ once: true }}
+              >
+                {step.id}
+              </motion.div>
               <div className={styles.stepLabel}>{step.label}</div>
-            </div>
+            </motion.div>
           </div>
         ))}
       </div>
