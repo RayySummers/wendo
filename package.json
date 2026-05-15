@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "build:prod": "NEXT_PUBLIC_BASE_PATH=/wendo next build",
+    "build:prod": "next build",
+    "build:all": "BASE_PATH=/wendo next build && echo 'Dev build ready'",
     "start": "next start",
     "lint": "eslint"
   },
