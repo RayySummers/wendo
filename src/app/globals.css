@@ -35,6 +35,22 @@
   --shadow-glow: 0 0 24px rgba(25, 67, 193, 0.3);
 
   --btn-primary-text: #ffffff;
+
+  --font-newsreader: "Newsreader", Georgia, "Times New Roman", serif;
+  --font-noto-sans-sc: "Noto Sans SC", CJKEmDash, Numbers, -apple-system, BlinkMacSystemFont, "Segoe UI", Cantarell, "Noto Sans", "Roboto Flex", Roboto, sans-serif, ui-sans-serif, system-ui;
+  --font-body: var(--font-newsreader), "Noto Serif SC", Georgia, "Times New Roman", serif;
+  --font-ui: var(--font-noto-sans-sc), CJKEmDash, Numbers, -apple-system, BlinkMacSystemFont, "Segoe UI", Cantarell, "Noto Sans", "Roboto Flex", Roboto, sans-serif, ui-sans-serif, system-ui, "Apple Color Emoji", "Twemoji Mozilla", "Noto Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", emoji;
+
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+  --transition-slow: 400ms ease;
+
+  --nav-height: 72px;
 }
 
 /* --- COLOR TOKENS (Dark Mode) --- */
