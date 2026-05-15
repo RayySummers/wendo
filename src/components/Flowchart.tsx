@@ -5,19 +5,18 @@ import styles from "./flowchart.module.css";
 
 const steps = [
   { id: "01", label: "文档提交", type: "start" },
-  { id: "02", label: "用户同意数据收集？", type: "diamond" },
-  { id: "03", label: "数据脱敏化", type: "process" },
-  { id: "04", label: "文档切分 Chunking", type: "process" },
-  { id: "05", label: "向量化 Embedding", type: "process" },
-  { id: "06", label: "ChromaDB 存储", type: "process" },
-  { id: "07", label: "记忆知识库诊断", type: "process" },
-  { id: "08", label: "Harness Engineering", type: "process" },
-  { id: "09", label: "调用大语言模型", type: "process" },
-  { id: "10", label: "生成诊断报告", type: "process" },
-  { id: "11", label: "保存报告", type: "process" },
-  { id: "12", label: "返回给用户", type: "process" },
-  { id: "13", label: "用户收到人工复核报告", type: "process" },
-  { id: "14", label: "服务结束", type: "end" },
+  { id: "02", label: "数据脱敏化", type: "process" },
+  { id: "03", label: "文档切分 Chunking", type: "process" },
+  { id: "04", label: "向量化 Embedding", type: "process" },
+  { id: "05", label: "ChromaDB 存储", type: "process" },
+  { id: "06", label: "记忆知识库诊断", type: "process" },
+  { id: "07", label: "Harness Engineering", type: "process" },
+  { id: "08", label: "调用大语言模型", type: "process" },
+  { id: "09", label: "生成诊断报告", type: "process" },
+  { id: "10", label: "保存报告", type: "process" },
+  { id: "11", label: "返回给用户", type: "process" },
+  { id: "12", label: "用户收到人工复核报告", type: "process" },
+  { id: "13", label: "服务结束", type: "end" },
 ];
 
 export default function Flowchart() {
