@@ -110,7 +110,7 @@
 .ctaBtn {
   padding: 8px 20px;
   background: var(--color-primary);
-  color: #fff;
+  color: var(--btn-primary-text);
   font-size: 0.875rem;
   font-weight: 600;
   font-family: var(--font-ui);
