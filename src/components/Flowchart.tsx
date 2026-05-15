@@ -9,14 +9,12 @@ const steps = [
   { id: "03", label: "文档切分 Chunking", type: "process" },
   { id: "04", label: "向量化 Embedding", type: "process" },
   { id: "05", label: "ChromaDB 存储", type: "process" },
-  { id: "06", label: "记忆知识库诊断", type: "process" },
-  { id: "07", label: "Harness Engineering", type: "process" },
-  { id: "08", label: "调用大语言模型", type: "process" },
-  { id: "09", label: "生成诊断报告", type: "process" },
-  { id: "10", label: "保存报告", type: "process" },
-  { id: "11", label: "返回给用户", type: "process" },
-  { id: "12", label: "用户收到人工复核报告", type: "process" },
-  { id: "13", label: "服务结束", type: "end" },
+  { id: "06", label: "Harness Engineering", type: "process" },
+  { id: "07", label: "调用大语言模型", type: "process" },
+  { id: "08", label: "生成诊断报告", type: "process" },
+  { id: "09", label: "返回给用户", type: "process" },
+  { id: "10", label: "用户收到人工复核报告", type: "process" },
+  { id: "11", label: "服务结束", type: "end" },
 ];
 
 export default function Flowchart() {
