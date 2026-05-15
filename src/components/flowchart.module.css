@@ -73,14 +73,25 @@
 .diamond {
   background: var(--color-bg-card);
   border: 1px solid var(--color-text-muted);
-  width: 100%;
-  max-width: 280px;
   justify-content: center;
   text-align: center;
 }
 
 .diamond:hover {
   border-color: var(--color-primary);
+}
+
+.end {
+  background: var(--color-primary);
+  box-shadow: 0 4px 16px rgba(25, 67, 193, 0.3);
+}
+
+.end .stepNumber {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.end .stepLabel {
+  color: white;
 }
 
 .stepNumber {
