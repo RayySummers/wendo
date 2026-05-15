@@ -1,0 +1,90 @@
+@keyframes drawLine {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes fadeInNode {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.container {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  overflow-x: auto;
+  padding: 24px 0;
+}
+
+.svg {
+  width: 100%;
+  height: auto;
+  min-height: 900px;
+}
+
+.line {
+  opacity: 0.8;
+}
+
+.node {
+  cursor: default;
+}
+
+.processNode {
+  fill: var(--color-bg-card);
+  stroke: var(--color-primary);
+  stroke-width: 2;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.diamond {
+  fill: var(--color-bg-card);
+  stroke: var(--color-text-muted);
+  stroke-width: 2;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.startNode {
+  fill: var(--color-primary);
+  stroke: none;
+}
+
+.endNode {
+  fill: var(--color-text-muted);
+  stroke: none;
+}
+
+.nodeLabel {
+  font-family: var(--font-ui);
+  font-size: 12px;
+  text-anchor: middle;
+  dominant-baseline: middle;
+  fill: var(--color-text);
+  pointer-events: none;
+}
+
+.nodeLabelSmall {
+  font-family: var(--font-ui);
+  font-size: 13px;
+  text-anchor: middle;
+  dominant-baseline: middle;
+  fill: white;
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 16px 0;
+  }
+
+  .svg {
+    min-height: 600px;
+  }
+}

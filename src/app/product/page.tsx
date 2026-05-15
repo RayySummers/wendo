@@ -2,6 +2,7 @@
 
 import { useRef, useCallback } from "react";
 import styles from "./page.module.css";
+import Flowchart from "@/components/Flowchart";
 
 const dimensions = [
   {
@@ -273,6 +274,14 @@ export default function ProductPage() {
             </div>
           </div>
         </div>
+      </section>
+
+      <section className={styles.flowchartSection}>
+        <div className={styles.flowchartHeader}>
+          <h2 className={`${styles.sectionTitle} font-serif-en`}>数据流程</h2>
+          <p className={styles.sectionSubtitle}>从文档到诊断报告的完整路径</p>
+        </div>
+        <Flowchart />
       </section>
 
       <section className={styles.knowledge}>

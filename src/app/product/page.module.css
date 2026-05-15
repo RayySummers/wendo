@@ -219,6 +219,16 @@
   margin: 0 auto;
 }
 
+.flowchartSection {
+  padding: 96px 24px;
+  background: var(--color-bg-secondary);
+}
+
+.flowchartHeader {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
 .processHeader {
   text-align: center;
   margin-bottom: 56px;
@@ -761,5 +771,9 @@
 
   .knowledgeTree {
     display: none;
+  }
+
+  .flowchartSection {
+    padding: 60px 16px;
   }
 }
