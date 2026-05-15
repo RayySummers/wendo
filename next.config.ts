@@ -1,12 +1,14 @@
 import type { NextConfig } from "next";
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "/wendo-dev";
+
 const nextConfig: NextConfig = {
   output: "export",
   images: {
     unoptimized: true,
   },
-  basePath: "/wendo-dev",
-  assetPrefix: "/wendo-dev",
+  basePath,
+  assetPrefix: basePath,
 };
 
 export default nextConfig;
