@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import { motion } from "motion/react";
 import styles from "./page.module.css";
 
 const diagnosticSteps = [
@@ -83,26 +84,53 @@ export default function HomePage() {
                 className={styles.heroLogoImgMobile}
               />
             </div>
-            <p className={styles.heroEyebrow}>跨境外贸网站本地化专家</p>
-            <h1 className={`${styles.heroTitle}`}>
+            <motion.p
+              className={styles.heroEyebrow}
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1, duration: 0.5 }}
+            >
+              跨境外贸网站本地化专家
+            </motion.p>
+            <motion.h1
+              className={styles.heroTitle}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.25, duration: 0.5 }}
+            >
               让出海有<br />
               <span className={styles.heroWordWrapper}>
                 <span key={animKey} className={styles.heroWord}>{heroWords[titleIndex]}</span>
               </span>
-            </h1>
-            <p className={styles.heroSubtitle}>
+            </motion.h1>
+            <motion.p
+              className={styles.heroSubtitle}
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.5 }}
+            >
               文渡Wendo帮助中国出海企业温暖触达全球。
-            </p>
-            <div className={styles.heroCtas}>
+            </motion.p>
+            <motion.div
+              className={styles.heroCtas}
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.55, duration: 0.5 }}
+            >
               <a href="/wendo/contact" className={styles.primaryBtn}>
                 报名体验
               </a>
               <a href="/wendo/product" className={styles.secondaryBtn}>
                 了解产品 →
               </a>
-            </div>
+            </motion.div>
           </div>
-          <div className={styles.heroLogo}>
+          <motion.div
+            className={styles.heroLogo}
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.3, duration: 0.6 }}
+          >
             <img
               src="/wendo/wendo_logo_vectorized.svg"
               alt="文渡 Wendo"
@@ -110,7 +138,7 @@ export default function HomePage() {
               height={400}
               className={styles.heroLogoImg}
             />
-          </div>
+          </motion.div>
         </div>
       </section>
 
