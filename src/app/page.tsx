@@ -94,10 +94,10 @@ export default function HomePage() {
               文渡Wendo帮助中国出海企业温暖触达全球。
             </p>
             <div className={styles.heroCtas}>
-              <a href="/contact" className={styles.primaryBtn}>
+              <a href="/wendo/contact" className={styles.primaryBtn}>
                 报名体验
               </a>
-              <a href="/product" className={styles.secondaryBtn}>
+              <a href="/wendo/product" className={styles.secondaryBtn}>
                 了解产品 →
               </a>
             </div>
@@ -148,7 +148,7 @@ export default function HomePage() {
               首批体验名额开放中，提交您的诊断需求，我们将尽快与您联系。
             </p>
           </div>
-          <a href="/contact" className={styles.ctaBtn}>
+          <a href="/wendo/contact" className={styles.ctaBtn}>
             报名抢先体验计划
           </a>
         </div>

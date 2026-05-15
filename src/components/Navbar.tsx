@@ -5,11 +5,11 @@ import Link from "next/link";
 import styles from "./Navbar.module.css";
 
 const navLinks = [
-  { href: "/", label: "首页" },
-  { href: "/product", label: "产品" },
-  { href: "/pricing", label: "定价" },
-  { href: "/about", label: "关于" },
-  { href: "/contact", label: "联系我们" },
+  { href: "/wendo/", label: "首页" },
+  { href: "/wendo/product", label: "产品" },
+  { href: "/wendo/pricing", label: "定价" },
+  { href: "/wendo/about", label: "关于" },
+  { href: "/wendo/contact", label: "联系我们" },
 ];
 
 export default function Navbar() {
@@ -43,7 +43,7 @@ export default function Navbar() {
   return (
     <header className={`${styles.navbar} ${scrolled ? styles.scrolled : ""}`}>
       <nav className={styles.nav}>
-        <Link href="/" className={styles.logo}>
+        <Link href="/wendo/" className={styles.logo}>
           <img
             src="/wendo/wendo_logo_vectorized.svg"
             alt="文渡 Wendo"
@@ -67,7 +67,7 @@ export default function Navbar() {
             </li>
           ))}
           <li className={styles.mobileCta}>
-            <Link href="/contact" className={styles.ctaBtn} onClick={() => setMenuOpen(false)}>
+            <Link href="/wendo/contact" className={styles.ctaBtn} onClick={() => setMenuOpen(false)}>
               报名体验
             </Link>
           </li>
@@ -98,7 +98,7 @@ export default function Navbar() {
             )}
           </button>
 
-          <Link href="/contact" className={styles.ctaBtn}>
+          <Link href="/wendo/contact" className={styles.ctaBtn}>
             报名体验
           </Link>
 

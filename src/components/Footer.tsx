@@ -2,11 +2,11 @@ import Link from "next/link";
 import styles from "./Footer.module.css";
 
 const footerLinks = [
-  { href: "/", label: "首页" },
-  { href: "/product", label: "产品" },
-  { href: "/pricing", label: "定价" },
-  { href: "/about", label: "关于" },
-  { href: "/contact", label: "联系我们" },
+  { href: "/wendo/", label: "首页" },
+  { href: "/wendo/product", label: "产品" },
+  { href: "/wendo/pricing", label: "定价" },
+  { href: "/wendo/about", label: "关于" },
+  { href: "/wendo/contact", label: "联系我们" },
 ];
 
 export default function Footer() {
