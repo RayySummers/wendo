@@ -71,7 +71,7 @@ const knowledgeBase = {
       title: "Regions",
       subtitle: "地区知识库",
       count: "30+",
-      regions: ["🇺🇸 美国", "🇬🇧 欧洲", "🇯🇵 日本", "🇦🇺 澳新"],
+      regions: ["🇺🇸 美国", "🇬🇧 欧洲", "🇯🇵 日本", "🇸🇬 东南亚"],
     },
     {
       icon: "📋",
