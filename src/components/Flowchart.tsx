@@ -4,18 +4,20 @@ import { useEffect, useRef } from "react";
 import styles from "./flowchart.module.css";
 
 const steps = [
-  { id: "A", label: "文档提交", type: "start" },
-  { id: "B", label: "用户同意数据收集？", type: "diamond" },
-  { id: "C", label: "数据脱敏化", type: "process" },
-  { id: "D", label: "文档切分 Chunking", type: "process" },
-  { id: "E", label: "向量化 Embedding", type: "process" },
-  { id: "F", label: "ChromaDB 存储", type: "process" },
-  { id: "G", label: "记忆知识库诊断", type: "process" },
-  { id: "H", label: "Harness Engineering", type: "process" },
-  { id: "I", label: "调用大语言模型", type: "process" },
-  { id: "J", label: "生成诊断报告", type: "process" },
-  { id: "K", label: "保存报告", type: "process" },
-  { id: "L", label: "返回给用户", type: "process" },
+  { id: "01", label: "文档提交", type: "start" },
+  { id: "02", label: "用户同意数据收集？", type: "diamond" },
+  { id: "03", label: "数据脱敏化", type: "process" },
+  { id: "04", label: "文档切分 Chunking", type: "process" },
+  { id: "05", label: "向量化 Embedding", type: "process" },
+  { id: "06", label: "ChromaDB 存储", type: "process" },
+  { id: "07", label: "记忆知识库诊断", type: "process" },
+  { id: "08", label: "Harness Engineering", type: "process" },
+  { id: "09", label: "调用大语言模型", type: "process" },
+  { id: "10", label: "生成诊断报告", type: "process" },
+  { id: "11", label: "保存报告", type: "process" },
+  { id: "12", label: "返回给用户", type: "process" },
+  { id: "13", label: "用户收到人工复核报告", type: "process" },
+  { id: "14", label: "服务结束", type: "end" },
 ];
 
 export default function Flowchart() {
@@ -48,45 +50,11 @@ export default function Flowchart() {
             <div
               className={`${styles.step} ${styles[step.type.replace("-", "")]}`}
             >
-              <div className={styles.stepNumber}>
-                {String(index + 1).padStart(2, "0")}
-              </div>
+              <div className={styles.stepNumber}>{step.id}</div>
               <div className={styles.stepLabel}>{step.label}</div>
             </div>
           </div>
         ))}
-
-        <div className={styles.branchSection}>
-          <div className={styles.branchDivider}>
-            <span className={styles.branchLabel}>分支</span>
-          </div>
-
-          <div className={styles.branchRow}>
-            <div className={styles.branchTop}>
-              <div className={styles.branchConnector} />
-              <div className={styles.branchStep}>
-                <div className={styles.branchStepLabel}>通知人工审核</div>
-              </div>
-            </div>
-
-            <div className={styles.branchBottom}>
-              <div className={styles.branchConnector} />
-              <div className={styles.branchStep}>
-                <div className={styles.branchStepLabel}>用户主动联系客服</div>
-              </div>
-            </div>
-          </div>
-
-          <div className={styles.mergeConnectors}>
-            <div className={styles.mergeLine} />
-            <div className={styles.mergeLine} />
-          </div>
-
-          <div className={styles.endNode}>
-            <div className={styles.endIcon}>✓</div>
-            <div className={styles.endLabel}>完成</div>
-          </div>
-        </div>
       </div>
     </div>
   );
