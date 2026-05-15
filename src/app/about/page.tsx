@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import styles from "./page.module.css";
+import HeroFadeIn from "@/components/HeroFadeIn";
 
 export const metadata: Metadata = {
   title: "关于文渡 — Wendo 团队与价值观",
@@ -69,13 +70,10 @@ const values = [
 export default function AboutPage() {
   return (
     <div className={styles.page}>
-      <section className={styles.hero}>
-        <div className={styles.heroContent}>
-          <h1 className={styles.heroTitle} style={{ fontFamily: 'var(--font-body)', textAlign: 'center' }}>
-            关于文渡
-          </h1>
-        </div>
-      </section>
+      <HeroFadeIn
+        title="关于文渡"
+        align="center"
+      />
 
       <section className={styles.story}>
         <div className={styles.storyContent}>

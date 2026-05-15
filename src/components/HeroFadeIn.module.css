@@ -1,0 +1,43 @@
+.hero {
+  padding: 80px 0 60px;
+}
+
+.heroContent {
+  max-width: 600px;
+}
+
+.left {
+  text-align: left;
+}
+
+.center {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.eyebrow {
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 12px;
+}
+
+.title {
+  font-family: var(--font-serif-en);
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 600;
+  color: var(--color-text);
+  line-height: 1.2;
+  margin: 0 0 16px;
+}
+
+.subtitle {
+  font-family: var(--font-ui);
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin: 0 0 24px;
+}

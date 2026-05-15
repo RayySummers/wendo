@@ -4,6 +4,7 @@ import styles from "./page.module.css";
 import Flowchart from "@/components/Flowchart";
 import FaqAccordion from "@/components/FaqAccordion";
 import KnowledgeTree from "@/components/KnowledgeTree";
+import HeroFadeIn from "@/components/HeroFadeIn";
 
 const dimensions = [
   {
@@ -66,20 +67,12 @@ const knowledgeBaseCategories = [
 export default function ProductPage() {
   return (
     <div className={styles.page}>
-      <section className={styles.hero}>
-        <div className={styles.heroContent}>
-          <p className={styles.heroEyebrow}>产品介绍</p>
-          <h1 className={`${styles.heroTitle} font-serif-en`}>
-            让全球用户<br />感受品牌的温度
-          </h1>
-          <p className={styles.heroSubtitle}>
-            文渡将 AI 与跨文化商务智能结合，通过对话式交互帮助中国出海企业打造真正"入乡随俗"的英文品牌网站——不只是准确，更是温暖触达。
-          </p>
-          <a href="/wendo/contact" className={styles.primaryBtn}>
-            报名体验
-          </a>
-        </div>
-      </section>
+      <HeroFadeIn
+        eyebrow="产品介绍"
+        title={<>让全球用户<br />感受品牌的温度</>}
+        subtitle={'文渡将 AI 与跨文化商务智能结合，通过对话式交互帮助中国出海企业打造真正"入乡随俗"的英文品牌网站——不只是准确，更是温暖触达。'}
+        cta={<a href="/wendo/contact" className={styles.primaryBtn}>报名体验</a>}
+      />
 
       <section className={styles.wendo}>
         <div className={styles.wendoHeader}>

@@ -2,6 +2,7 @@
 
 import { useForm, ValidationError } from "@formspree/react";
 import styles from "./page.module.css";
+import HeroFadeIn from "@/components/HeroFadeIn";
 
 export default function ContactPage() {
   const [state, handleSubmit] = useForm("mzdoldej");
@@ -41,13 +42,10 @@ export default function ContactPage() {
 
   return (
     <div className={styles.page}>
-      <section className={styles.hero}>
-        <div className={styles.heroContent} style={{ gap: 0 }}>
-          <h1 className={styles.heroTitle} style={{ fontFamily: 'var(--font-body)', textAlign: 'center' }}>
-            联系我们
-          </h1>
-        </div>
-      </section>
+      <HeroFadeIn
+        title="联系我们"
+        align="center"
+      />
 
       <section className={styles.main}>
         <div className={styles.formSection}>

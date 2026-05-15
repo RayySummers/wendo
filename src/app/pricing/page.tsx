@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
+import { motion } from "motion/react";
 import styles from "./page.module.css";
+
+import HeroFadeIn from "@/components/HeroFadeIn";
 
 export const metadata: Metadata = {
   title: "定价方案 — Wendo 文渡",
@@ -115,13 +118,10 @@ const plans = [
 export default function PricingPage() {
   return (
     <div className={styles.page}>
-      <section className={styles.hero}>
-        <div className={styles.heroContent}>
-          <h1 className={styles.heroTitle} style={{ fontFamily: 'var(--font-body)', textAlign: 'center' }}>
-            定价
-          </h1>
-        </div>
-      </section>
+      <HeroFadeIn
+        title="定价"
+        align="center"
+      />
 
       <section className={styles.plans}>
         <div className={styles.plansGrid}>
