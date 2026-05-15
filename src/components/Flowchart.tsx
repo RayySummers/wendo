@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "motion/react";
+import { useEffect, useRef } from "react";
 import styles from "./flowchart.module.css";
 
 const steps = [
@@ -18,36 +18,38 @@ const steps = [
 ];
 
 export default function Flowchart() {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          container.classList.add(styles.visible);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(container);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className={styles.container}>
+    <div ref={containerRef} className={styles.container}>
       <div className={styles.timeline}>
         {steps.map((step, index) => (
           <div key={step.id} className={styles.stepWrapper}>
-            {index > 0 && (
-              <motion.div
-                className={styles.connector}
-                initial={{ scaleY: 0 }}
-                whileInView={{ scaleY: 1 }}
-                transition={{ duration: 0.25 }}
-                viewport={{ once: true }}
-                style={{ transformOrigin: "top" }}
-              />
-            )}
-            <motion.div
+            {index > 0 && <div className={styles.connector} />}
+            <div
               className={`${styles.step} ${styles[step.type.replace("-", "")]}`}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{
-                delay: index * 0.05,
-                duration: 0.4,
-                ease: [0.25, 0.46, 0.45, 0.94],
-              }}
-              whileHover={{ x: 4 }}
-              viewport={{ once: true, margin: "-40px" }}
             >
               <div className={styles.stepNumber}>{step.id}</div>
               <div className={styles.stepLabel}>{step.label}</div>
-            </motion.div>
+            </div>
           </div>
         ))}
       </div>
