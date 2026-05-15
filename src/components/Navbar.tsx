@@ -15,6 +15,7 @@ const navLinks = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [bannerVisible, setBannerVisible] = useState(false);
   const [theme, setTheme] = useState<"dark" | "light">(() => {
     if (typeof window !== "undefined") {
       return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
@@ -40,8 +41,32 @@ export default function Navbar() {
     setTheme((prev) => (prev === "dark" ? "light" : "dark"));
   };
 
+useEffect(() => {
+    const dismissed = sessionStorage.getItem("bannerDismissed");
+    if (!dismissed) setBannerVisible(true);
+  }, []);
+
+  const dismissBanner = () => {
+    setBannerVisible(false);
+    sessionStorage.setItem("bannerDismissed", "1");
+  };
+
   return (
-    <header className={`${styles.navbar} ${scrolled ? styles.scrolled : ""}`}>
+    <>
+      {bannerVisible && (
+        <div className={styles.banner}>
+          <span>
+            文渡已迁移至新地址&nbsp;
+            <a href="https://wendo-psi.vercel.app/wendo/" className={styles.bannerLink}>
+              wendo-psi.vercel.app/wendo/
+            </a>
+          </span>
+          <button onClick={dismissBanner} className={styles.bannerClose} aria-label="关闭">
+            ✕
+          </button>
+        </div>
+      )}
+      <header className={`${styles.navbar} ${scrolled ? styles.scrolled : ""}`} style={bannerVisible ? { top: "40px" } : {}}>
       <nav className={styles.nav}>
         <Link href="/" className={styles.logo}>
           <img
@@ -115,5 +140,6 @@ export default function Navbar() {
         </div>
       </nav>
     </header>
+    </>
   );
 }
