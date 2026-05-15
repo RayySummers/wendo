@@ -1,19 +1,16 @@
 .page {
   padding-top: var(--nav-height);
-}
-
-.hero {
-  min-height: calc(100vh - var(--nav-height));
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 80px 24px;
   background: var(--color-bg-hero);
+  padding-left: 24px;
+  padding-right: 24px;
 }
 
-.heroContent {
+.content {
   text-align: center;
-  max-width: 600px;
 }
 
 .title {
@@ -22,8 +19,7 @@
   font-weight: 700;
   color: var(--color-primary);
   line-height: 1;
-  margin-bottom: 24px;
-  opacity: 0.9;
+  margin-bottom: 16px;
 }
 
 .subtitle {
@@ -31,7 +27,7 @@
   font-size: clamp(1.5rem, 4vw, 2rem);
   font-weight: 600;
   color: var(--color-text-inverse);
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }
 
 .text {
