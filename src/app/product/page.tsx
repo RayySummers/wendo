@@ -180,6 +180,67 @@ export default function ProductPage() {
       });
     }
   }, []);
+
+  const toggleTree = useCallback((e: React.MouseEvent<HTMLElement>) => {
+    e.preventDefault();
+    const summary = e.currentTarget;
+    const details = summary.parentElement as HTMLDetailsElement;
+    const children = details.querySelector(`.${styles.treeChildren}`) as HTMLElement;
+    const subChildren = details.querySelectorAll(`.${styles.treeSubChildren}`) as NodeListOf<HTMLElement>;
+
+    if (animatingRef.current) return;
+    animatingRef.current = true;
+
+    if (details.hasAttribute("open")) {
+      const height = children.scrollHeight;
+      const animation = children.animate(
+        [
+          { maxHeight: height + "px", opacity: 1 },
+          { maxHeight: "0px", opacity: 0 },
+        ],
+        { duration: 250, easing: "ease-in-out" }
+      );
+      animation.onfinish = () => {
+        details.removeAttribute("open");
+        children.style.maxHeight = "";
+        children.style.opacity = "";
+        subChildren.forEach(el => {
+          el.style.maxHeight = "";
+          el.style.opacity = "";
+        });
+        animatingRef.current = false;
+      };
+    } else {
+      details.setAttribute("open", "");
+      requestAnimationFrame(() => {
+        const height = children.scrollHeight;
+        children.style.maxHeight = "0px";
+        children.style.opacity = "0";
+        subChildren.forEach(el => {
+          el.style.maxHeight = "0px";
+          el.style.opacity = "0";
+        });
+        requestAnimationFrame(() => {
+          const animation = children.animate(
+            [
+              { maxHeight: "0px", opacity: 0 },
+              { maxHeight: height + "px", opacity: 1 },
+            ],
+            { duration: 250, easing: "ease-in-out" }
+          );
+          animation.onfinish = () => {
+            children.style.maxHeight = height + "px";
+            children.style.opacity = "1";
+            subChildren.forEach(el => {
+              el.style.maxHeight = el.scrollHeight + "px";
+              el.style.opacity = "1";
+            });
+            animatingRef.current = false;
+          };
+        });
+      });
+    }
+  }, []);
   return (
     <div className={styles.page}>
       <section className={styles.hero}>
@@ -307,7 +368,7 @@ export default function ProductPage() {
           <div className={styles.treeList}>
             {knowledgeBase.tree[0].children.map((folder) => (
               <details key={folder.name} className={styles.treeItem}>
-                <summary className={styles.treeSummary}>
+                <summary className={styles.treeSummary} onClick={toggleTree}>
                   <span className={styles.treeFolder}>{folder.label}</span>
                   <span className={styles.treeArrow}>▶</span>
                 </summary>
@@ -317,7 +378,7 @@ export default function ProductPage() {
                       <span key={child} className={styles.treeFile}>{child}</span>
                     ) : (
                       <details key={child.name} className={styles.treeSubItem}>
-                        <summary className={styles.treeSubSummary}>
+                        <summary className={styles.treeSubSummary} onClick={toggleTree}>
                           <span className={styles.treeFolder}>{child.label}</span>
                           {child.children && child.children.length > 0 && (
                             <span className={styles.treeArrow}>▶</span>

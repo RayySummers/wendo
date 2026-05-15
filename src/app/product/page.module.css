@@ -506,6 +506,7 @@
 }
 
 .treeChildren {
+  overflow: hidden;
   padding: 0 24px 12px 40px;
   display: flex;
   flex-direction: column;
@@ -534,6 +535,7 @@
 }
 
 .treeSubChildren {
+  overflow: hidden;
   padding: 0 16px 10px 32px;
   display: flex;
   flex-direction: column;
