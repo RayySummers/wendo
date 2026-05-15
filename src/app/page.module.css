@@ -110,7 +110,7 @@
 .primaryBtn {
   padding: 14px 32px;
   background: var(--color-primary);
-  color: #fff;
+  color: var(--btn-primary-text);
   font-size: 1rem;
   font-weight: 600;
   font-family: var(--font-ui);
@@ -334,7 +334,7 @@
 .ctaBtn {
   padding: 14px 32px;
   background: var(--color-primary);
-  color: #fff;
+  color: var(--btn-primary-text);
   font-size: 1rem;
   font-weight: 600;
   font-family: var(--font-ui);
