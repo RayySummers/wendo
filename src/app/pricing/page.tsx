@@ -25,7 +25,7 @@ const plans = [
     price: "288",
     priceNote: "元 / 月",
     tag: "推荐",
-    tagColor: "#1943c1",
+    tagColor: "#7096EC",
     desc: "适合有常规诊断需求的小型企业",
     features: [
       "每月 25 次诊断（每天 1 次）",
@@ -157,12 +157,18 @@ export default function PricingPage() {
                   );
                 })}
               </ul>
-              <a
-                href={plan.ctaHref}
-                className={`${styles.planCta} ${plan.highlight ? styles.planCtaHighlighted : ""}`}
-              >
-                {plan.cta}
-              </a>
+              {plan.name === "Enterprise" ? (
+                <a
+                  href={plan.ctaHref}
+                  className={`${styles.planCta} ${plan.highlight ? styles.planCtaHighlighted : ""}`}
+                >
+                  {plan.cta}
+                </a>
+              ) : (
+                <span className={styles.planCtaDisabled}>
+                  敬请期待
+                </span>
+              )}
             </div>
           ))}
         </div>
