@@ -3,27 +3,40 @@
 import { useEffect, useRef } from "react";
 import styles from "./flowchart.module.css";
 
-const nodes = [
-  { id: "A", type: "start", label: "文档" },
-  { id: "B", type: "diamond", label: "用户同意\n数据收集？" },
-  { id: "C", type: "process", label: "数据脱敏化" },
-  { id: "D", type: "process", label: "文档切分" },
-  { id: "E", type: "process", label: "向量化" },
-  { id: "F", type: "process", label: "ChromaDB" },
-  { id: "G", type: "process", label: "知识库检索" },
-  { id: "H", type: "process", label: "Harness Eng." },
-  { id: "I", type: "process", label: "调用大语言模型" },
-  { id: "J", type: "process", label: "生成诊断报告" },
-  { id: "K", type: "process", label: "保存报告" },
-  { id: "L", type: "process", label: "返回给用户" },
-  { id: "M", type: "process", label: "通知人工审核" },
-  { id: "N", type: "process", label: "用户主动联系" },
-  { id: "O", type: "end", label: "结束" },
+interface FlowNode {
+  id: string;
+  type: "start" | "end" | "process" | "diamond";
+  label: string;
+  y: number;
+  x?: number;
+}
+
+const flowNodes: FlowNode[] = [
+  { id: "A", type: "start", label: "文档提交", y: 0 },
+  { id: "B", type: "diamond", label: "用户同意\n数据收集？", y: 110 },
+  { id: "C", type: "process", label: "数据脱敏化", y: 210 },
+  { id: "D", type: "process", label: "文档切分", y: 310 },
+  { id: "E", type: "process", label: "向量化 Embedding", y: 410 },
+  { id: "F", type: "process", label: "ChromaDB 存储", y: 510 },
+  { id: "G", type: "process", label: "知识库检索", y: 610 },
+  { id: "H", type: "process", label: "Harness Engineering", y: 710 },
+  { id: "I", type: "process", label: "调用大语言模型", y: 810 },
+  { id: "J", type: "process", label: "生成诊断报告", y: 910 },
+  { id: "K", type: "process", label: "保存报告", y: 1010 },
+  { id: "L", type: "process", label: "返回给用户", y: 1110 },
+  { id: "M", type: "process", label: "通知人工审核", y: 1180, x: 180 },
+  { id: "N", type: "process", label: "用户主动联系", y: 1180, x: 540 },
+  { id: "O", type: "end", label: "结束", y: 1320 },
 ];
 
-const connections = [
+interface Connection {
+  from: string;
+  to: string;
+}
+
+const connections: Connection[] = [
   { from: "A", to: "B" },
-  { from: "B", to: "C", label: "是/否" },
+  { from: "B", to: "C" },
   { from: "C", to: "D" },
   { from: "D", to: "E" },
   { from: "E", to: "F" },
@@ -40,192 +53,160 @@ const connections = [
 ];
 
 export default function Flowchart() {
-  const svgRef = useRef<SVGSVGElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const svg = svgRef.current;
-    if (!svg) return;
-
-    const animate = () => {
-      const pathLines = svg.querySelectorAll(`.${styles.line}`);
-      const nodeGroups = svg.querySelectorAll(`.${styles.node}`);
-
-      pathLines.forEach((line, i) => {
-        const length = (line as SVGPathElement).getTotalLength?.() || 100;
-        (line as SVGPathElement).style.strokeDasharray = `${length}`;
-        (line as SVGPathElement).style.strokeDashoffset = `${length}`;
-        (line as SVGPathElement).style.animation = `drawLine 0.5s ease forwards ${i * 0.08}s`;
-      });
-
-      nodeGroups.forEach((node, i) => {
-        (node as SVGGElement).style.opacity = "0";
-        (node as SVGGElement).style.animation = `fadeInNode 0.4s ease forwards ${i * 0.06 + 0.2}s`;
-      });
-    };
+    const container = containerRef.current;
+    if (!container) return;
 
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting) {
-          animate();
+          container.classList.add(styles.visible);
           observer.disconnect();
         }
       },
-      { threshold: 0.3 }
+      { threshold: 0.2 }
     );
 
-    observer.observe(svg);
+    observer.observe(container);
     return () => observer.disconnect();
   }, []);
 
+  const getPosition = (id: string) => {
+    const node = flowNodes.find((n) => n.id === id);
+    return {
+      x: node?.x ?? 360,
+      y: node?.y ?? 0,
+    };
+  };
+
+  const renderConnections = () => {
+    return connections.map((conn, i) => {
+      const from = getPosition(conn.from);
+      const to = getPosition(conn.to);
+
+      const isLeftBranch = conn.to === "M";
+      const isRightBranch = conn.to === "N";
+
+      let path: string;
+      if (isLeftBranch || isRightBranch) {
+        const startX = from.x;
+        const startY = from.y + 50;
+        const endX = to.x;
+        const endY = to.y - 30;
+        const midY = (startY + endY) / 2;
+        path = `M ${startX} ${startY} L ${startX} ${midY} L ${endX} ${midY} L ${endX} ${endY}`;
+      } else {
+        const startY = from.y + 50;
+        path = `M ${from.x} ${startY} L ${to.x} ${to.y - 30}`;
+      }
+
+      return (
+        <path
+          key={`conn-${i}`}
+          d={path}
+          className={styles.connectionLine}
+          fill="none"
+          strokeWidth="2"
+          markerEnd="url(#arrowhead)"
+        />
+      );
+    });
+  };
+
+  const renderNodes = () => {
+    return flowNodes.map((node) => {
+      const x = node.x ?? 360;
+      const y = node.y;
+
+      if (node.type === "start") {
+        return (
+          <g key={node.id} className={styles.nodeGroup}>
+            <rect
+              x={x - 60}
+              y={y - 25}
+              width={120}
+              height={50}
+              rx={25}
+              className={styles.startNode}
+            />
+            <text x={x} y={y + 5} className={styles.startText}>
+              {node.label}
+            </text>
+          </g>
+        );
+      }
+
+      if (node.type === "end") {
+        return (
+          <g key={node.id} className={styles.nodeGroup}>
+            <circle cx={x} cy={y} r={30} className={styles.endNode} />
+            <text x={x} y={y + 5} className={styles.endText}>
+              {node.label}
+            </text>
+          </g>
+        );
+      }
+
+      if (node.type === "diamond") {
+        const size = 50;
+        return (
+          <g key={node.id} className={styles.nodeGroup}>
+            <polygon
+              points={`${x},${y - size} ${x + size},${y} ${x},${y + size} ${x - size},${y}`}
+              className={styles.diamondNode}
+            />
+            <text x={x} y={y - 5} className={styles.diamondText}>
+              {node.label.split("\n")[0]}
+            </text>
+            <text x={x} y={y + 12} className={styles.diamondText}>
+              {node.label.split("\n")[1]}
+            </text>
+          </g>
+        );
+      }
+
+      return (
+        <g key={node.id} className={styles.nodeGroup}>
+          <rect
+            x={x - 80}
+            y={y - 30}
+            width={160}
+            height={60}
+            rx={12}
+            className={styles.processNode}
+          />
+          <text x={x} y={y + 5} className={styles.processText}>
+            {node.label}
+          </text>
+        </g>
+      );
+    });
+  };
+
   return (
-    <div className={styles.container}>
+    <div ref={containerRef} className={styles.container}>
       <svg
-        ref={svgRef}
-        viewBox="0 0 900 1400"
+        viewBox="0 0 720 1380"
         className={styles.svg}
         xmlns="http://www.w3.org/2000/svg"
       >
         <defs>
           <marker
             id="arrowhead"
-            markerWidth="10"
-            markerHeight="7"
-            refX="9"
-            refY="3.5"
+            markerWidth="8"
+            markerHeight="6"
+            refX="7"
+            refY="3"
             orient="auto"
           >
-            <polygon points="0 0, 10 3.5, 0 7" fill="var(--color-primary)" />
-          </marker>
-          <marker
-            id="arrowhead-gray"
-            markerWidth="10"
-            markerHeight="7"
-            refX="9"
-            refY="3.5"
-            orient="auto"
-          >
-            <polygon points="0 0, 10 3.5, 0 7" fill="var(--color-text-muted)" />
+            <polygon points="0 0, 8 3, 0 6" fill="var(--color-primary)" />
           </marker>
         </defs>
 
-        {connections.map((conn, i) => {
-          const fromNode = nodes.find((n) => n.id === conn.from);
-          const toNode = nodes.find((n) => n.id === conn.to);
-          if (!fromNode || !toNode) return null;
-
-          const yPositions: Record<string, number> = {
-            A: 60, B: 160, C: 270, D: 360, E: 450, F: 540, G: 630, H: 720,
-            I: 810, J: 900, K: 990, L: 1080, M: 1170, N: 1170, O: 1300,
-          };
-
-          const xPositions: Record<string, number> = {
-            A: 450, B: 450, C: 450, D: 450, E: 450, F: 450, G: 450, H: 450,
-            I: 450, J: 450, K: 450, L: 450, M: 250, N: 650, O: 450,
-          };
-
-          const x1 = xPositions[conn.from];
-          const y1 = yPositions[conn.from];
-          const x2 = xPositions[conn.to];
-          const y2 = yPositions[conn.to];
-
-          let path = "";
-          if (conn.from === "L" && conn.to === "M") {
-            path = `M ${x1} ${y1} C ${x1} ${y1 + 50}, ${x2} ${y2 - 50}, ${x2} ${y2}`;
-          } else if (conn.from === "L" && conn.to === "N") {
-            path = `M ${x1} ${y1} C ${x1} ${y1 + 50}, ${x2} ${y2 - 50}, ${x2} ${y2}`;
-          } else if (conn.from === "B" && conn.to === "C") {
-            path = `M ${x1 - 50} ${y1} L ${x2} ${y2}`;
-          } else {
-            path = `M ${x1} ${y1} L ${x2} ${y2}`;
-          }
-
-          return (
-            <path
-              key={`${conn.from}-${conn.to}`}
-              d={path}
-              className={styles.line}
-              fill="none"
-              stroke={
-                conn.from === "B" ? "var(--color-text-muted)" : "var(--color-primary)"
-              }
-              strokeWidth="2"
-              markerEnd={
-                conn.from === "B" ? "url(#arrowhead-gray)" : "url(#arrowhead)"
-              }
-            />
-          );
-        })}
-
-        {nodes.map((node) => {
-          const yPositions: Record<string, number> = {
-            A: 60, B: 160, C: 270, D: 360, E: 450, F: 540, G: 630, H: 720,
-            I: 810, J: 900, K: 990, L: 1080, M: 1170, N: 1170, O: 1300,
-          };
-          const xPositions: Record<string, number> = {
-            A: 450, B: 450, C: 450, D: 450, E: 450, F: 450, G: 450, H: 450,
-            I: 450, J: 450, K: 450, L: 450, M: 250, N: 650, O: 450,
-          };
-
-          const cx = xPositions[node.id];
-          const cy = yPositions[node.id];
-
-          if (node.type === "diamond") {
-            const size = 60;
-            return (
-              <g key={node.id} className={styles.node}>
-                <polygon
-                  points={`${cx},${cy - size} ${cx + size},${cy} ${cx},${cy + size} ${cx - size},${cy}`}
-                  className={styles.diamond}
-                />
-                <text x={cx} y={cy + 4} className={styles.nodeLabel}>
-                  {node.label.split("\n").map((line, i) => (
-                    <tspan key={i} x={cx} dy={i === 0 ? -6 : 14}>
-                      {line}
-                    </tspan>
-                  ))}
-                </text>
-              </g>
-            );
-          }
-
-          if (node.type === "start" || node.type === "end") {
-            const width = 100;
-            const height = 40;
-            return (
-              <g key={node.id} className={styles.node}>
-                <rect
-                  x={cx - width / 2}
-                  y={cy - height / 2}
-                  width={width}
-                  height={height}
-                  rx={height / 2}
-                  className={node.type === "start" ? styles.startNode : styles.endNode}
-                />
-                <text x={cx} y={cy + 4} className={styles.nodeLabelSmall}>
-                  {node.label}
-                </text>
-              </g>
-            );
-          }
-
-          const width = 140;
-          const height = 50;
-          return (
-            <g key={node.id} className={styles.node}>
-              <rect
-                x={cx - width / 2}
-                y={cy - height / 2}
-                width={width}
-                height={height}
-                rx={10}
-                className={styles.processNode}
-              />
-              <text x={cx} y={cy + 4} className={styles.nodeLabel}>
-                {node.label}
-              </text>
-            </g>
-          );
-        })}
+        {renderConnections()}
+        {renderNodes()}
       </svg>
     </div>
   );
