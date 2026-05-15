@@ -6,46 +6,7 @@
   z-index: 100;
   height: var(--nav-height);
   background: var(--color-bg-hero);
-  transition: background 0.35s ease, transform 0.35s ease, top 0.35s ease;
-}
-
-.banner {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 200;
-  height: 40px;
-  background: #04115c;
-  border-bottom: 1px solid rgba(255,255,255,0.15);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-  font-size: 0.85rem;
-  color: rgba(255,255,255,0.9);
-  padding: 0 16px;
-}
-
-.bannerLink {
-  color: #7096EC;
-  text-decoration: underline;
-  font-weight: 600;
-}
-
-.bannerClose {
-  background: none;
-  border: none;
-  color: rgba(255,255,255,0.7);
-  cursor: pointer;
-  font-size: 0.9rem;
-  padding: 4px 8px;
-  border-radius: 4px;
-  transition: color 0.2s;
-}
-
-.bannerClose:hover {
-  color: #fff;
+  transition: background 0.35s ease, transform 0.35s ease;
 }
 
 .visible {
