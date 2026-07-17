@@ -168,6 +168,15 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section className={styles.freeNotice}>
+        <div className={styles.freeNoticeCard}>
+          <h2 className={`${styles.freeNoticeTitle} font-serif-en`}>为什么免费？</h2>
+          <p className={styles.freeNoticeText}>
+            文渡正处于产品验证与模型优化阶段。我们为早期用户免费提供跨文化适配诊断服务，旨在收集真实业务场景下的使用反馈，持续打磨诊断引擎的精度与深度。您的体验与建议，将成为文渡迭代升级的重要驱动力。
+          </p>
+        </div>
+      </section>
+
       <section className={styles.cta}>
         <div className={styles.ctaCard}>
           <div className={styles.ctaContent}>

@@ -295,6 +295,33 @@
   color: var(--color-text-secondary);
 }
 
+.freeNotice {
+  padding: 60px 24px;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.freeNoticeCard {
+  padding: 48px 40px;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+.freeNoticeTitle {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 16px;
+}
+
+.freeNoticeText {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: var(--color-text-secondary);
+}
+
 .cta {
   padding: 60px 24px;
   display: flex;
