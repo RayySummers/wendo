@@ -35,7 +35,7 @@ jobs:
 
       - name: Build
         env:
-          NEXT_PUBLIC_BASE_PATH: /wendo
+          NEXT_PUBLIC_BASE_PATH: ""
         run: npm run build
 
       - name: Upload artifact
