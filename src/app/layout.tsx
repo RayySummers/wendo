@@ -30,6 +30,9 @@ export const metadata: Metadata = {
     description: "帮助中国出海企业发现并修复英文官网中的文化适配问题。",
     images: ["/wendo_logo_vectorized.svg"],
   },
+  icons: {
+    icon: "/wendo_logo_vectorized.svg",
+  },
   robots: {
     index: true,
     follow: true,
