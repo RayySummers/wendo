@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     "Wendo 文渡帮助中国出海企业发现并修复英文官网中的文化适配问题。AI 驱动的跨文化商务智能诊断，让品牌温暖触达全球用户。",
   keywords: ["跨境外贸", "网站本地化", "文化适配", "出海企业", "英文网站诊断", "B2B", "品牌出海"],
   authors: [{ name: "Wendo 文渡" }],
-  metadataBase: new URL("https://rayysummers.github.io"),
+  metadataBase: new URL("https://www.wendo.world"),
   openGraph: {
     title: "Wendo 文渡 — 跨境外贸网站本地化与文化适配诊断平台",
     description: "帮助中国出海企业发现并修复英文官网中的文化适配问题。AI 驱动的跨文化商务智能诊断。",
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     locale: "zh_CN",
     siteName: "Wendo 文渡",
     images: [{
-      url: "/wendo/wendo_logo_vectorized.svg",
+      url: "/wendo_logo_vectorized.svg",
       width: 400,
       height: 400,
       alt: "Wendo 文渡 Logo",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Wendo 文渡 — 跨境外贸网站本地化与文化适配诊断平台",
     description: "帮助中国出海企业发现并修复英文官网中的文化适配问题。",
-    images: ["/wendo/wendo_logo_vectorized.svg"],
+    images: ["/wendo_logo_vectorized.svg"],
   },
   robots: {
     index: true,

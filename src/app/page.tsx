@@ -77,7 +77,7 @@ export default function HomePage() {
           <div className={styles.heroContent}>
             <div className={styles.heroLogoMobile}>
               <img
-                src="/wendo/wendo_logo_vectorized.svg"
+                src="/wendo_logo_vectorized.svg"
                 alt="文渡 Wendo"
                 width={280}
                 height={280}
@@ -117,10 +117,10 @@ export default function HomePage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.55, duration: 0.5 }}
             >
-              <a href="/wendo/contact" className={styles.primaryBtn}>
+              <a href="/contact" className={styles.primaryBtn}>
                 报名体验
               </a>
-              <a href="/wendo/product" className={styles.secondaryBtn}>
+              <a href="/product" className={styles.secondaryBtn}>
                 了解产品 →
               </a>
             </motion.div>
@@ -132,7 +132,7 @@ export default function HomePage() {
             transition={{ delay: 0.3, duration: 0.6 }}
           >
             <img
-              src="/wendo/wendo_logo_vectorized.svg"
+              src="/wendo_logo_vectorized.svg"
               alt="文渡 Wendo"
               width={400}
               height={400}
@@ -176,7 +176,7 @@ export default function HomePage() {
               首批体验名额开放中，提交您的诊断需求，我们将尽快与您联系。
             </p>
           </div>
-          <a href="/wendo/contact" className={styles.ctaBtn}>
+          <a href="/contact" className={styles.ctaBtn}>
             报名抢先体验计划
           </a>
         </div>

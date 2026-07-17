@@ -45,7 +45,7 @@ export default function Navbar() {
       <nav className={styles.nav}>
         <Link href="/" className={styles.logo}>
 <img
-                src="/wendo/wendo_logo_vectorized.svg"
+                src="/wendo_logo_vectorized.svg"
                 alt="文渡 Wendo"
                 width={28}
                 height={28}
