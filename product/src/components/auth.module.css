@@ -1,0 +1,176 @@
+.page {
+  min-height: 100dvh;
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1fr);
+}
+
+/* ---------- 左侧品牌 ---------- */
+
+.aside {
+  background: var(--navy);
+  color: #fff;
+  padding: 2rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100dvh;
+}
+
+.asideBrand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  font-family: var(--font-display);
+  font-size: 1.0625rem;
+}
+
+.asideMark {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: var(--r-sm);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  font-family: var(--font-display);
+  line-height: 1;
+  padding-top: 2px;
+}
+
+.asideBody {
+  max-width: 22rem;
+}
+
+.asideQuote {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 2.6vw, 2.4rem);
+  line-height: 1.32;
+  letter-spacing: -0.01em;
+}
+
+.asideMeta {
+  margin-top: 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.asideFoot {
+  font-size: var(--step--1);
+  color: rgba(255, 255, 255, 0.45);
+}
+
+/* ---------- 右侧表单 ---------- */
+
+.main {
+  display: grid;
+  place-items: center;
+  padding: 3rem 1.5rem;
+}
+
+.card {
+  width: min(100%, 25rem);
+}
+
+.head {
+  margin-bottom: 1.75rem;
+}
+
+.title {
+  font-size: var(--step-3);
+  color: var(--navy);
+}
+
+.subtitle {
+  margin-top: 0.5rem;
+  color: var(--ink-soft);
+  font-size: var(--step-0);
+}
+
+.form {
+  display: grid;
+  gap: 1.125rem;
+}
+
+.actions {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+.submit {
+  width: 100%;
+}
+
+.formError {
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-start;
+  padding: 0.625rem 0.75rem;
+  border-radius: var(--r-md);
+  background: var(--danger-tint);
+  color: var(--danger);
+  font-size: var(--step--1);
+  line-height: 1.5;
+}
+
+.hintBox {
+  margin-top: 0.25rem;
+  padding: 0.625rem 0.75rem;
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--r-md);
+  font-size: var(--step--1);
+  color: var(--ink-soft);
+  background: var(--cobalt-wash);
+}
+
+.hintBox code {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--cobalt-deep);
+}
+
+.foot {
+  margin-top: 1.75rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line);
+  font-size: var(--step--1);
+  color: var(--muted);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem 1rem;
+}
+
+.foot a {
+  color: var(--cobalt);
+}
+
+.foot a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 900px) {
+  .page {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .aside {
+    min-height: auto;
+    padding: 1.25rem 1.5rem 1.5rem;
+    gap: 1.5rem;
+  }
+
+  .asideBody {
+    display: none;
+  }
+
+  .asideFoot {
+    display: none;
+  }
+
+  .main {
+    padding: 2rem 1.25rem 3rem;
+    place-items: start center;
+  }
+}
